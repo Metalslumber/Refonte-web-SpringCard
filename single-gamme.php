@@ -188,7 +188,7 @@ while ( have_posts() ) :
 			<div class="feature-copy reveal">
 				<div class="num"><?php esc_html_e( "Bureau d'études", 'springcard' ); ?></div>
 				<h3><?php esc_html_e( 'Un kit pour démarrer en un après-midi', 'springcard' ); ?></h3>
-				<p><?php esc_html_e( 'SDK, exemples de code et kit de développement pour valider votre intégration rapidement — puis notre bureau d\'études prend le relais pour le sur-mesure.', 'springcard' ); ?></p>
+				<p><?php esc_html_e( 'SDK, exemples de code et kit de développement pour valider votre intégration rapidement, puis notre bureau d\'études prend le relais pour le sur-mesure.', 'springcard' ); ?></p>
 			</div>
 		</div>
 	</div>
