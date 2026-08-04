@@ -87,11 +87,6 @@ while ( have_posts() ) :
 		<?php endif; ?>
 		<div class="gamme-hero-scrim"></div>
 		<div class="gamme-hero-inner">
-			<div class="crumb crumb-on-dark">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Accueil', 'springcard' ); ?></a>
-				/ <span><?php esc_html_e( 'Produits', 'springcard' ); ?></span>
-				/ <span aria-current="page"><?php the_title(); ?></span>
-			</div>
 			<div class="eyebrow eyebrow-on-dark">
 				<?php
 				/* translators: %s: statut label, e.g. "active", "archivée", "à venir". */
