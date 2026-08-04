@@ -4,8 +4,14 @@
   "landingPage": "/",
   "steps": [
     {
-      "step": "activateTheme",
-      "themeFolderName": "springcard-theme"
+      "step": "installTheme",
+      "themeData": {
+        "resource": "url",
+        "url": "https://github.com/TON_USER/springcard-theme-demo/archive/refs/heads/main.zip"
+      },
+      "options": {
+        "activate": true
+      }
     },
     {
       "step": "runPHP",
