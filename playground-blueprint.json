@@ -1,0 +1,15 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "login": true,
+  "landingPage": "/",
+  "steps": [
+    {
+      "step": "activateTheme",
+      "themeFolderName": "springcard-theme"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php';\n$pages = array(\n  array('title' => 'À propos', 'slug' => 'a-propos', 'template' => 'page-a-propos.php'),\n  array('title' => 'Solutions', 'slug' => 'solutions', 'template' => 'page-solutions.php'),\n  array('title' => \"Bureau d'études\", 'slug' => 'bureau-etudes', 'template' => 'page-bureau-etudes.php'),\n);\nforeach ($pages as $p) {\n  if (get_page_by_path($p['slug'])) { continue; }\n  $id = wp_insert_post(array(\n    'post_type'   => 'page',\n    'post_title'  => $p['title'],\n    'post_name'   => $p['slug'],\n    'post_status' => 'publish',\n  ));\n  if ($id && !is_wp_error($id)) {\n    update_post_meta($id, '_wp_page_template', $p['template']);\n  }\n}\n"
+    }
+  ]
+}
