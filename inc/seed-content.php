@@ -51,6 +51,9 @@ function springcard_sideload_theme_asset( $src_path, $title ) {
 
 	$mime_types = array(
 		'webp' => 'image/webp',
+		'jpg'  => 'image/jpeg',
+		'jpeg' => 'image/jpeg',
+		'png'  => 'image/png',
 		'mp4'  => 'video/mp4',
 	);
 	$ext        = strtolower( pathinfo( $src_path, PATHINFO_EXTENSION ) );
@@ -79,7 +82,7 @@ function springcard_sideload_theme_asset( $src_path, $title ) {
 		return false;
 	}
 
-	if ( 'webp' === $ext ) {
+	if ( in_array( $ext, array( 'webp', 'jpg', 'jpeg', 'png' ), true ) ) {
 		update_post_meta( $attachment_id, '_wp_attachment_image_alt', $title );
 	}
 	wp_update_attachment_metadata( $attachment_id, wp_generate_attachment_metadata( $attachment_id, $upload['file'] ) );
