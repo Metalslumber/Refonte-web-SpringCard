@@ -34,8 +34,8 @@ function springcard_statut_options() {
 function springcard_antenne_options() {
 	return array(
 		'non_fournie' => __( 'Module seul', 'springcard' ),
-		'separee'     => __( 'Séparée', 'springcard' ),
-		'integree'    => __( 'Intégrée', 'springcard' ),
+		'separee'     => __( 'Antenne séparée', 'springcard' ),
+		'integree'    => __( 'Antenne intégrée', 'springcard' ),
 	);
 }
 
