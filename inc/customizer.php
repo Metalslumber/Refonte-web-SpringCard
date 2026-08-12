@@ -56,8 +56,62 @@ function springcard_customize_register( $wp_customize ) {
 	);
 
 	springcard_register_home_text_controls( $wp_customize );
+	springcard_register_footer_controls( $wp_customize );
 }
 add_action( 'customize_register', 'springcard_customize_register' );
+
+/**
+ * Editable controls for the footer's address and social network links.
+ */
+function springcard_register_footer_controls( $wp_customize ) {
+	$wp_customize->add_section(
+		'springcard_footer',
+		array(
+			'title'    => __( 'Pied de page', 'springcard' ),
+			'priority' => 32,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'springcard_footer_address',
+		array(
+			'default'           => springcard_footer_defaults()['springcard_footer_address'],
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'springcard_footer_address',
+		array(
+			'label'   => __( 'Adresse', 'springcard' ),
+			'section' => 'springcard_footer',
+			'type'    => 'text',
+		)
+	);
+
+	$social_labels = array(
+		'springcard_footer_facebook' => __( 'Facebook (URL, laisser vide pour masquer)', 'springcard' ),
+		'springcard_footer_twitter'  => __( 'Twitter / X (URL, laisser vide pour masquer)', 'springcard' ),
+		'springcard_footer_linkedin' => __( 'LinkedIn (URL, laisser vide pour masquer)', 'springcard' ),
+		'springcard_footer_youtube'  => __( 'YouTube (URL, laisser vide pour masquer)', 'springcard' ),
+	);
+	foreach ( $social_labels as $setting => $label ) {
+		$wp_customize->add_setting(
+			$setting,
+			array(
+				'default'           => springcard_footer_defaults()[ $setting ],
+				'sanitize_callback' => 'esc_url_raw',
+			)
+		);
+		$wp_customize->add_control(
+			$setting,
+			array(
+				'label'   => $label,
+				'section' => 'springcard_footer',
+				'type'    => 'url',
+			)
+		);
+	}
+}
 
 /**
  * Editable controls for the home page's hero title, lead and 3 stat sentences.

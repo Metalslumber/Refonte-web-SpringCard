@@ -206,6 +206,33 @@ function springcard_home_text( $key ) {
 }
 
 /**
+ * Footer site info (address) and social network links, editable in
+ * Apparence → Personnaliser, with SpringCard's real public info as default.
+ *
+ * @return array<string, string>
+ */
+function springcard_footer_defaults() {
+	return array(
+		'springcard_footer_address'  => __( '2 voie la Cardon, Parc Gutenberg, 91120 Palaiseau, France', 'springcard' ),
+		'springcard_footer_facebook' => 'https://www.facebook.com/Springcard/',
+		'springcard_footer_twitter'  => 'https://twitter.com/sc_rfid',
+		'springcard_footer_linkedin' => 'https://www.linkedin.com/company/springcard/',
+		'springcard_footer_youtube'  => 'https://www.youtube.com/channel/UChkfP_eFhSFndcPYombOLmg',
+	);
+}
+
+/**
+ * Read one of the footer settings, falling back to its default.
+ *
+ * @param string $key One of the springcard_footer_defaults() keys.
+ * @return string
+ */
+function springcard_footer_text( $key ) {
+	$defaults = springcard_footer_defaults();
+	return get_theme_mod( $key, isset( $defaults[ $key ] ) ? $defaults[ $key ] : '' );
+}
+
+/**
  * Client logos for the homepage marquee, ordered manually via page-attributes.
  *
  * @return WP_Post[]
