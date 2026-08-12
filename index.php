@@ -13,14 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<div class="crumb">
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Accueil', 'springcard' ); ?></a>
-	<?php if ( is_search() ) : ?>
-		/ <span aria-current="page"><?php echo esc_html( sprintf( __( 'Résultats pour « %s »', 'springcard' ), get_search_query() ) ); ?></span>
-	<?php endif; ?>
-</div>
-
 <div class="section reveal" style="padding-top:20px;">
+	<?php if ( is_search() ) : ?>
+		<h1 style="font-size:1.875rem; margin-bottom:14px;"><?php echo esc_html( sprintf( __( 'Résultats pour « %s »', 'springcard' ), get_search_query() ) ); ?></h1>
+	<?php endif; ?>
 	<?php if ( have_posts() ) : ?>
 		<div class="grid grid-3">
 			<?php

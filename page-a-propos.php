@@ -33,11 +33,6 @@ while ( have_posts() ) :
 	$contact_email = get_option( 'admin_email' );
 	?>
 
-	<div class="crumb">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Accueil', 'springcard' ); ?></a>
-		/ <span aria-current="page"><?php the_title(); ?></span>
-	</div>
-
 	<div class="section reveal" style="padding-top:20px;">
 		<div class="eyebrow"><?php esc_html_e( 'À propos', 'springcard' ); ?></div>
 		<h1 style="font-size:1.875rem; max-width:560px; margin-bottom:24px;"><?php the_title(); ?></h1>
