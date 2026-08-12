@@ -40,7 +40,7 @@ while ( have_posts() ) :
 
 	<div class="section reveal" style="padding-top:20px;">
 		<div class="eyebrow"><?php esc_html_e( 'À propos', 'springcard' ); ?></div>
-		<h1 style="font-size:27px; max-width:560px; margin-bottom:24px;"><?php the_title(); ?></h1>
+		<h1 style="font-size:1.875rem; max-width:560px; margin-bottom:24px;"><?php the_title(); ?></h1>
 
 		<?php if ( get_the_content() ) : ?>
 			<div class="prose" style="margin-bottom:24px;"><?php the_content(); ?></div>

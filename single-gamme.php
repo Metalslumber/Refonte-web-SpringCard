@@ -246,7 +246,7 @@ while ( have_posts() ) :
 	<div class="section" id="ressources">
 		<div class="section-head reveal">
 			<div class="eyebrow"><?php esc_html_e( 'Ressources', 'springcard' ); ?></div>
-			<h2 style="font-size:18px;"><?php esc_html_e( 'De quoi démarrer', 'springcard' ); ?></h2>
+			<h2 style="font-size:1.25rem;"><?php esc_html_e( 'De quoi démarrer', 'springcard' ); ?></h2>
 		</div>
 		<div class="grid grid-4">
 			<a class="card reveal" href="<?php echo ! empty( $variantes ) ? '#comparer' : '#'; ?>">
