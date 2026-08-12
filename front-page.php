@@ -68,19 +68,29 @@ $logos_clients    = springcard_get_client_logos();
 		<h2><?php esc_html_e( 'Trois configurations, une même liberté', 'springcard' ); ?></h2>
 		<p><?php esc_html_e( 'Chaque variante correspond à un niveau différent de liberté sur le design du produit final.', 'springcard' ); ?></p>
 	</div>
-	<div class="grid grid-3">
+	<div class="glance-grid">
 		<?php
 		foreach ( $produits_actifs as $produit ) :
-			$gamme_id  = (int) get_post_meta( $produit->ID, '_gamme_id', true );
-			$link      = $gamme_id ? get_permalink( $gamme_id ) : '#';
-			$badge_src = ( false !== strpos( $produit->post_title, '-' ) ) ? substr( strrchr( $produit->post_title, '-' ), 1 ) : $produit->post_title;
-			$badge     = strtoupper( substr( $badge_src, 0, 2 ) );
+			$gamme_id     = (int) get_post_meta( $produit->ID, '_gamme_id', true );
+			$link         = $gamme_id ? get_permalink( $gamme_id ) : '#';
+			$type_antenne = get_post_meta( $produit->ID, '_type_antenne', true );
 			?>
-			<a class="card reveal" href="<?php echo esc_url( $link ); ?>">
-				<div class="ic"><?php echo esc_html( $badge ); ?></div>
-				<h3><?php echo esc_html( get_the_title( $produit ) ); ?></h3>
-				<p><?php echo esc_html( get_the_excerpt( $produit ) ); ?></p>
-				<span class="go"><?php esc_html_e( 'Voir la fiche →', 'springcard' ); ?></span>
+			<a class="glance-card reveal" href="<?php echo esc_url( $link ); ?>">
+				<div class="glance-media">
+					<?php if ( $type_antenne ) : ?>
+						<span class="tag-overlay"><?php echo esc_html( springcard_antenne_label( $type_antenne ) ); ?></span>
+					<?php endif; ?>
+					<?php if ( has_post_thumbnail( $produit ) ) : ?>
+						<?php echo get_the_post_thumbnail( $produit, 'springcard-feature', array( 'alt' => get_the_title( $produit ) ) ); ?>
+					<?php else : ?>
+						<div class="glance-placeholder" aria-hidden="true"></div>
+					<?php endif; ?>
+				</div>
+				<div class="glance-body">
+					<h3><?php echo esc_html( get_the_title( $produit ) ); ?></h3>
+					<p><?php echo esc_html( get_the_excerpt( $produit ) ); ?></p>
+					<span class="go"><?php esc_html_e( 'Voir la fiche →', 'springcard' ); ?></span>
+				</div>
 			</a>
 			<?php
 		endforeach;
