@@ -42,6 +42,7 @@ body {
 	font-family: var(--sc-body);
 	line-height: 1.6;
 	font-size: 1rem;
+	overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -250,9 +251,9 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
 .hero {
 	position: relative;
-	margin: 24px 0 48px;
-	min-height: 68vh;
-	border-radius: 16px;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	min-height: 72vh;
 	overflow: hidden;
 	display: flex;
 	align-items: flex-end;
@@ -265,10 +266,10 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 		linear-gradient(100deg, rgba(16, 44, 67, .92) 0%, rgba(16, 44, 67, .75) 30%, rgba(16, 44, 67, .25) 58%, rgba(16, 44, 67, 0) 78%),
 		linear-gradient(0deg, rgba(16, 44, 67, .78) 0%, rgba(16, 44, 67, 0) 42%);
 }
-.hero-inner { position: relative; z-index: 1; padding: 40px 36px; max-width: 620px; }
+.hero-inner { position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; width: 100%; padding: 64px 28px 40px; }
 .hero-inner .eyebrow { color: #FFD9DC; }
 .hero-inner .eyebrow::before { background: var(--sc-rouge); }
-.hero h1 { font-size: clamp(2rem, 4.2vw, 2.875rem); line-height: 1.08; margin-bottom: 16px; color: #fff; }
+.hero h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.08; margin-bottom: 16px; color: #fff; max-width: 780px; }
 .hero p.lead { color: #CBD8DF; font-size: 1.125rem; max-width: 480px; margin: 0 0 26px; }
 .hero .btn-ghost { border-color: rgba(255, 255, 255, .5); color: #fff; background: transparent; }
 .hero .btn-ghost:hover { background: rgba(255, 255, 255, .12); border-color: #fff; }
@@ -473,6 +474,7 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 /* Nav rapide de gamme : sticky juste sous le header principal (lui-même sticky). */
 .gamme-nav {
 	position: sticky; top: var(--sc-header-h); z-index: 40;
+	width: 100vw; margin-left: calc(50% - 50vw);
 	background: rgba(250, 250, 250, 0.92); backdrop-filter: blur(8px);
 	border-bottom: 1px solid var(--sc-line);
 }
@@ -492,9 +494,11 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 #variantes, #comparer, #ressources { scroll-margin-top: calc(var(--sc-header-h) + 58px); }
 
 .gamme-hero {
-	position: relative; min-height: 74vh; display: flex; align-items: flex-end;
+	position: relative; min-height: 72vh; display: flex; align-items: flex-end;
+	width: 100vw; margin-left: calc(50% - 50vw);
 	background: var(--sc-marine); overflow: hidden;
 }
+@media (max-width: 860px) { .gamme-hero { min-height: 560px; } }
 .gamme-hero-media { position: absolute; inset: 0; background-size: cover; background-position: 72% 45%; }
 .gamme-hero-scrim {
 	position: absolute; inset: 0;
@@ -508,7 +512,7 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 .eyebrow-on-dark { color: #FFD9DC; }
 .eyebrow-on-dark::before { background: var(--sc-rouge); }
 .gamme-hero-title {
-	font-size: clamp(2.75rem, 7vw, 5.25rem); line-height: .98; color: #fff; margin: 0 0 18px;
+	font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.08; color: #fff; margin: 0 0 18px;
 	letter-spacing: -0.02em; max-width: 780px;
 }
 .gamme-hero-lead { font-size: clamp(1.0625rem, 1.6vw, 1.1875rem); color: #CBD8DF; max-width: 480px; margin: 0 0 28px; line-height: 1.55; }
