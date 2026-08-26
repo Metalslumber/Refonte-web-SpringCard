@@ -211,12 +211,6 @@ while ( have_posts() ) :
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td><?php esc_html_e( 'Antenne', 'springcard' ); ?></td>
-					<?php foreach ( $variantes as $variante ) : ?>
-						<td><?php echo esc_html( springcard_antenne_label( get_post_meta( $variante->ID, '_type_antenne', true ) ) ); ?></td>
-					<?php endforeach; ?>
-				</tr>
 				<?php foreach ( $all_labels as $label ) : ?>
 					<tr>
 						<td><?php echo esc_html( $label ); ?></td>
@@ -225,18 +219,6 @@ while ( have_posts() ) :
 						<?php endforeach; ?>
 					</tr>
 				<?php endforeach; ?>
-				<tr>
-					<td><?php esc_html_e( 'Fiche technique', 'springcard' ); ?></td>
-					<?php foreach ( $variantes as $variante ) : $pdf_url = springcard_get_fiche_technique_url( $variante->ID ); ?>
-						<td>
-							<?php if ( $pdf_url ) : ?>
-								<a href="<?php echo esc_url( $pdf_url ); ?>" target="_blank" rel="noopener noreferrer">PDF</a>
-							<?php else : ?>
-								-
-							<?php endif; ?>
-						</td>
-					<?php endforeach; ?>
-				</tr>
 				</tbody>
 			</table>
 		</div>

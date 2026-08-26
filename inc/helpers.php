@@ -27,7 +27,41 @@ function springcard_get_gammes_actives() {
 }
 
 /**
- * Produits with statut = actif, optionally restricted to one gamme.
+ * Position of a "_type_antenne" value in the site's display hierarchy
+ * (module seul → antenne intégrée → antenne déportée), derived from the
+ * order of springcard_antenne_options() so both stay in sync.
+ *
+ * @param string $type_antenne Raw "_type_antenne" meta value.
+ * @return int
+ */
+function springcard_antenne_sort_rank( $type_antenne ) {
+	$rank = array_search( $type_antenne, array_keys( springcard_antenne_options() ), true );
+	return false === $rank ? 99 : $rank;
+}
+
+/**
+ * Sort produits by antenna hierarchy (module seul → intégrée → déportée)
+ * instead of title, so the display order stays meaningful regardless of
+ * how variants happen to be named.
+ *
+ * @param WP_Post[] $produits
+ * @return WP_Post[]
+ */
+function springcard_sort_produits_by_antenne( $produits ) {
+	usort(
+		$produits,
+		function ( $a, $b ) {
+			$rank_a = springcard_antenne_sort_rank( get_post_meta( $a->ID, '_type_antenne', true ) );
+			$rank_b = springcard_antenne_sort_rank( get_post_meta( $b->ID, '_type_antenne', true ) );
+			return $rank_a <=> $rank_b;
+		}
+	);
+	return $produits;
+}
+
+/**
+ * Produits with statut = actif, optionally restricted to one gamme, ordered
+ * by antenna hierarchy (module seul → intégrée → déportée).
  *
  * @param int|null $gamme_id Optional parent gamme post ID.
  * @return WP_Post[]
@@ -36,7 +70,6 @@ function springcard_get_produits_actifs( $gamme_id = null ) {
 	$args = array(
 		'post_type'      => 'produit',
 		'posts_per_page' => -1,
-		'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
 		'meta_query'     => array(
 			'relation' => 'AND',
 			array(
@@ -53,26 +86,27 @@ function springcard_get_produits_actifs( $gamme_id = null ) {
 		);
 	}
 
-	return get_posts( $args );
+	return springcard_sort_produits_by_antenne( get_posts( $args ) );
 }
 
 /**
  * All produits belonging to a gamme, regardless of statut (used on the gamme
- * comparison table, which should keep showing archived/upcoming variants too).
+ * comparison table, which should keep showing archived/upcoming variants
+ * too), ordered by antenna hierarchy (module seul → intégrée → déportée).
  *
  * @param int $gamme_id Parent gamme post ID.
  * @return WP_Post[]
  */
 function springcard_get_produits_de_gamme( $gamme_id ) {
-	return get_posts(
+	$produits = get_posts(
 		array(
 			'post_type'      => 'produit',
 			'posts_per_page' => -1,
-			'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
 			'meta_key'       => '_gamme_id',
 			'meta_value'     => (int) $gamme_id,
 		)
 	);
+	return springcard_sort_produits_by_antenne( $produits );
 }
 
 /**

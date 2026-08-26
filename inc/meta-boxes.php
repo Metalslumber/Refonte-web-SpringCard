@@ -29,13 +29,16 @@ function springcard_statut_options() {
 }
 
 /**
- * Allowed "type d'antenne" values for produit.
+ * Allowed "type d'antenne" values for produit, dans l'ordre de la hiérarchie
+ * affichée sur le site (module seul → antenne intégrée → antenne déportée).
+ * L'ordre de ce tableau pilote aussi le tri des variantes, voir
+ * springcard_antenne_sort_rank() dans helpers.php.
  */
 function springcard_antenne_options() {
 	return array(
 		'non_fournie' => __( 'Module seul', 'springcard' ),
-		'separee'     => __( 'Antenne séparée', 'springcard' ),
 		'integree'    => __( 'Antenne intégrée', 'springcard' ),
+		'separee'     => __( 'Antenne déportée', 'springcard' ),
 	);
 }
 
