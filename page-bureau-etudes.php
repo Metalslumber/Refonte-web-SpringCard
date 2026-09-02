@@ -34,11 +34,11 @@ while ( have_posts() ) :
 
 	<div class="section reveal" style="padding-top:20px;">
 		<div class="eyebrow"><?php esc_html_e( "Bureau d'études", 'springcard' ); ?></div>
-		<h1 style="font-size:1.875rem; max-width:580px; margin-bottom:14px;"><?php the_title(); ?></h1>
+		<h1 style="font-size:1.875rem; max-width:580px; margin-bottom:14px;"><?php esc_html_e( 'Votre prochain produit est déjà en germe', 'springcard' ); ?></h1>
 		<?php if ( get_the_content() ) : ?>
 			<div class="prose" style="max-width:560px; margin-bottom:22px;"><?php the_content(); ?></div>
 		<?php endif; ?>
-		<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Décrire mon projet', 'springcard' ); ?></a>
+		<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Parler de votre projet', 'springcard' ); ?></a>
 	</div>
 
 	<?php if ( ! empty( $expertises ) ) : ?>
@@ -59,6 +59,40 @@ while ( have_posts() ) :
 		</div>
 	</div>
 	<?php endif; ?>
+
+	<div class="section">
+		<div class="section-head reveal">
+			<div class="eyebrow"><?php esc_html_e( 'Innovation', 'springcard' ); ?></div>
+			<h2><?php esc_html_e( 'Des projets qui ouvrent la voie', 'springcard' ); ?></h2>
+		</div>
+		<div class="prose reveal" style="margin-bottom:22px;">
+			<p><?php esc_html_e( "Ancrée dans une démarche d'innovation agile, l'équipe SpringCard peut prendre en charge le projet le plus atypique qui doit valider une technologie, convaincre un client stratégique ou rendre visible une nouvelle direction.", 'springcard' ); ?></p>
+			<p><?php esc_html_e( "Démonstrateur pour le prochain salon, preuve de concept, prototype fonctionnel ou première version d'un futur produit prêt à être industrialisé : nous réunissons rapidement le hardware, le firmware, le logiciel et la sécurité qui démontreront votre valeur ajoutée et convaincront vos clients ou les décideurs.", 'springcard' ); ?></p>
+			<p><?php esc_html_e( "Notre démarche ? Lever les inconnues techniques, élaguer la complexité inutile, raccourcir le chemin vers une démonstration crédible afin de transmettre à votre équipe une base solide qu'elle pourra maîtriser pleinement.", 'springcard' ); ?></p>
+		</div>
+		<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Construire un démonstrateur', 'springcard' ); ?></a>
+	</div>
+
+	<div class="section">
+		<div class="section-head reveal">
+			<div class="eyebrow"><?php esc_html_e( 'Collaboration', 'springcard' ); ?></div>
+			<h2><?php esc_html_e( 'Trois façons de travailler avec nous', 'springcard' ); ?></h2>
+		</div>
+		<div class="grid grid-3">
+			<div class="card reveal">
+				<h3><?php esc_html_e( 'Accélérer votre produit', 'springcard' ); ?></h3>
+				<p><?php esc_html_e( "Vous partez du M519 ou d'une architecture existante. Nous traitons les points spécialisés : antenne, intégration RF, protocole, carte sécurisée, cryptographie, pilote ou logiciel embarqué.", 'springcard' ); ?></p>
+			</div>
+			<div class="card reveal">
+				<h3><?php esc_html_e( 'Explorer une nouvelle voie', 'springcard' ); ?></h3>
+				<p><?php esc_html_e( "Nous réalisons un prototype ou un démonstrateur complet pour tester un usage, préparer un salon, sécuriser un choix d'architecture ou convaincre avant d'engager l'industrialisation.", 'springcard' ); ?></p>
+			</div>
+			<div class="card reveal">
+				<h3><?php esc_html_e( 'Acquérir une base éprouvée', 'springcard' ); ?></h3>
+				<p><?php esc_html_e( 'Vous pouvez acquérir une licence sur une bibliothèque logicielle, une IP ou un dossier de définition de produit conçu par SpringCard, puis fabriquer et faire évoluer la solution dans le cadre convenu.', 'springcard' ); ?></p>
+			</div>
+		</div>
+	</div>
 
 	<div class="section">
 		<div class="section-head reveal"><div class="eyebrow"><?php esc_html_e( 'Méthode', 'springcard' ); ?></div></div>
@@ -86,6 +120,17 @@ while ( have_posts() ) :
 		</div>
 	</div>
 
+	<div class="section">
+		<div class="section-head reveal">
+			<div class="eyebrow"><?php esc_html_e( 'Livrables', 'springcard' ); ?></div>
+			<h2><?php esc_html_e( 'Des briques techniques maîtrisées', 'springcard' ); ?></h2>
+		</div>
+		<div class="prose reveal">
+			<p><?php esc_html_e( "Selon le projet, SpringCard livre un prototype, un dossier de conception, du code source, une bibliothèque documentée, des outils de test ou un transfert de compétences. Le périmètre, la propriété intellectuelle, les conditions de licence et le niveau d'accompagnement sont définis dès le départ.", 'springcard' ); ?></p>
+			<p><?php esc_html_e( 'Les projets peuvent être conduits et documentés à 100 % en français ou en anglais, avec des interlocuteurs techniques capables de travailler directement avec vos équipes internationales.', 'springcard' ); ?></p>
+		</div>
+	</div>
+
 	<?php if ( ! empty( $case_study ) ) : $cas = $case_study[0]; ?>
 	<div class="section" style="background:var(--sc-surface); border-radius:14px; padding:28px;">
 		<div class="eyebrow"><?php esc_html_e( 'Ils nous ont confié leur développement sur mesure', 'springcard' ); ?></div>
@@ -110,7 +155,7 @@ while ( have_posts() ) :
 				<h3><?php esc_html_e( 'Discutons de votre projet', 'springcard' ); ?></h3>
 				<p><?php esc_html_e( 'Un premier échange avec un ingénieur, sans engagement.', 'springcard' ); ?></p>
 			</div>
-			<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Prendre rendez-vous', 'springcard' ); ?></a>
+			<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Décrire votre besoin', 'springcard' ); ?></a>
 		</div>
 	</div>
 
