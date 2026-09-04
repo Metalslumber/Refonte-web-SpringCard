@@ -80,6 +80,38 @@
 	}
 
 	/**
+	 * Carrousels horizontaux (ex. Secteurs en accueil) : les boutons font
+	 * défiler d'une carte à chaque clic et se désactivent en bout de piste ;
+	 * le défilement tactile/trackpad natif fonctionne sans eux.
+	 */
+	document.querySelectorAll( '.carousel' ).forEach( function ( carousel ) {
+		var track = carousel.querySelector( '.carousel-track' );
+		var prevBtn = carousel.querySelector( '[data-carousel-prev]' );
+		var nextBtn = carousel.querySelector( '[data-carousel-next]' );
+		if ( ! track || ! prevBtn || ! nextBtn ) {
+			return;
+		}
+
+		function scrollByCard( direction ) {
+			var card = track.querySelector( '.card' );
+			var step = card ? card.getBoundingClientRect().width + 14 : track.clientWidth * 0.8;
+			track.scrollBy( { left: direction * step, behavior: 'smooth' } );
+		}
+
+		function updateButtons() {
+			var max = track.scrollWidth - track.clientWidth - 1;
+			prevBtn.disabled = track.scrollLeft <= 0;
+			nextBtn.disabled = track.scrollLeft >= max;
+		}
+
+		prevBtn.addEventListener( 'click', function () { scrollByCard( -1 ); } );
+		nextBtn.addEventListener( 'click', function () { scrollByCard( 1 ); } );
+		track.addEventListener( 'scroll', updateButtons );
+		window.addEventListener( 'resize', updateButtons );
+		updateButtons();
+	} );
+
+	/**
 	 * Animations d'apparition au scroll.
 	 */
 	if ( 'IntersectionObserver' in window ) {

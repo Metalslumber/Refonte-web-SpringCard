@@ -117,19 +117,25 @@ $logos_clients    = springcard_get_client_logos();
 		<div class="eyebrow"><?php esc_html_e( 'Secteurs', 'springcard' ); ?></div>
 		<h2><?php esc_html_e( 'Vos défis, par secteur', 'springcard' ); ?></h2>
 	</div>
-	<div class="grid grid-4">
-		<?php
-		foreach ( $secteurs as $secteur ) :
-			$anchor = 'sector-' . $secteur->post_name;
-			$href   = ( $solutions_url ? $solutions_url : '#' ) . '#' . $anchor;
-			?>
-			<a class="card reveal" href="<?php echo esc_url( $href ); ?>">
-				<h3><?php echo esc_html( get_the_title( $secteur ) ); ?></h3>
-				<p><?php echo esc_html( get_the_excerpt( $secteur ) ); ?></p>
-			</a>
+	<div class="carousel">
+		<div class="carousel-track">
 			<?php
-		endforeach;
-		?>
+			foreach ( $secteurs as $secteur ) :
+				$anchor = 'sector-' . $secteur->post_name;
+				$href   = ( $solutions_url ? $solutions_url : '#' ) . '#' . $anchor;
+				?>
+				<a class="card reveal" href="<?php echo esc_url( $href ); ?>">
+					<h3><?php echo esc_html( get_the_title( $secteur ) ); ?></h3>
+					<p><?php echo esc_html( get_the_excerpt( $secteur ) ); ?></p>
+				</a>
+				<?php
+			endforeach;
+			?>
+		</div>
+		<div class="carousel-nav">
+			<button type="button" class="carousel-btn" data-carousel-prev aria-label="<?php esc_attr_e( 'Secteur précédent', 'springcard' ); ?>">←</button>
+			<button type="button" class="carousel-btn" data-carousel-next aria-label="<?php esc_attr_e( 'Secteur suivant', 'springcard' ); ?>">→</button>
+		</div>
 	</div>
 </div>
 <?php endif; ?>

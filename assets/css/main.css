@@ -238,6 +238,32 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 .card p { color: var(--sc-muted); font-size: 0.9375rem; margin: 0; }
 .card .go { display: inline-block; margin-top: 12px; font-size: 0.875rem; color: var(--sc-rouge-deep); font-weight: 700; }
 
+/* Carrousel horizontal (ex. Secteurs en accueil) : mêmes cartes que .grid,
+   défilement tactile/trackpad natif + boutons précédent/suivant en JS. */
+.carousel-track {
+	display: flex;
+	gap: 14px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding-bottom: 2px;
+	scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track .card { flex: 0 0 260px; scroll-snap-align: start; }
+.carousel-nav { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+.carousel-btn {
+	width: 38px; height: 38px; border-radius: 50%;
+	border: 1px solid var(--sc-line); background: #fff; color: var(--sc-marine);
+	font-size: 1rem; cursor: pointer;
+	display: flex; align-items: center; justify-content: center;
+	transition: border-color .15s, color .15s;
+}
+.carousel-btn:hover:not(:disabled) { border-color: var(--sc-rouge); color: var(--sc-rouge-deep); }
+.carousel-btn:disabled { opacity: .35; cursor: default; }
+@media (max-width: 640px) {
+	.carousel-nav { display: none; }
+}
+
 .ghost {
 	border: 1px dashed var(--sc-line-strong); background: transparent; display: flex; align-items: center;
 	justify-content: center; text-align: center; color: var(--sc-muted); font-size: 0.875rem;
