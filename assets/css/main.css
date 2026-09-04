@@ -537,6 +537,16 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 	.feature-row.reverse .feature-media { order: 0; }
 }
 
+/* Hero avec visuel produit détouré (ex. Bureau d'études) : texte + image flottante. */
+.hero-split { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.hero-split-copy { flex: 1; min-width: 0; }
+.hero-split-visual { flex: 1; display: flex; justify-content: center; min-width: 0; }
+.hero-split-visual img { max-width: 100%; width: 460px; height: auto; display: block; }
+@media (max-width: 860px) {
+	.hero-split { flex-direction: column; }
+	.hero-split-visual img { width: 320px; }
+}
+
 /* Cartes "d'un coup d'œil" par variante. */
 .glance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .glance-card {

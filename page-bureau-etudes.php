@@ -33,12 +33,19 @@ while ( have_posts() ) :
 	?>
 
 	<div class="section reveal" style="padding-top:20px;">
-		<div class="eyebrow"><?php esc_html_e( "Bureau d'études", 'springcard' ); ?></div>
-		<h1 style="font-size:1.875rem; max-width:580px; margin-bottom:14px;"><?php esc_html_e( 'Votre prochain produit est déjà en germe', 'springcard' ); ?></h1>
-		<?php if ( get_the_content() ) : ?>
-			<div class="prose" style="max-width:560px; margin-bottom:22px;"><?php the_content(); ?></div>
-		<?php endif; ?>
-		<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Parler de votre projet', 'springcard' ); ?></a>
+		<div class="hero-split">
+			<div class="hero-split-copy">
+				<div class="eyebrow"><?php esc_html_e( "Bureau d'études", 'springcard' ); ?></div>
+				<h1 style="font-size:1.875rem; max-width:580px; margin-bottom:14px;"><?php esc_html_e( 'Votre prochain produit est déjà en germe', 'springcard' ); ?></h1>
+				<?php if ( get_the_content() ) : ?>
+					<div class="prose" style="max-width:560px; margin-bottom:22px;"><?php the_content(); ?></div>
+				<?php endif; ?>
+				<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Parler de votre projet', 'springcard' ); ?></a>
+			</div>
+			<div class="hero-split-visual reveal">
+				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/bureau-etudes/hero-module.png' ) ); ?>" alt="<?php esc_attr_e( 'Module M519', 'springcard' ); ?>">
+			</div>
+		</div>
 	</div>
 
 	<?php if ( ! empty( $expertises ) ) : ?>
