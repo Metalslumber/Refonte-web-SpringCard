@@ -88,3 +88,4 @@ require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/class-nav-walker.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/seed-content.php';
+require get_template_directory() . '/inc/i18n.php';
