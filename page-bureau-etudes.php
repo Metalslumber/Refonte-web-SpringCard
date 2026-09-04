@@ -43,7 +43,9 @@ while ( have_posts() ) :
 				<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Parler de votre projet', 'springcard' ); ?></a>
 			</div>
 			<div class="hero-split-visual reveal">
-				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/bureau-etudes/hero-module.png' ) ); ?>" alt="<?php esc_attr_e( 'Module M519', 'springcard' ); ?>">
+				<div class="hero-visual-panel">
+					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/bureau-etudes/hero-module.png' ) ); ?>" alt="<?php esc_attr_e( 'Module M519', 'springcard' ); ?>">
+				</div>
 			</div>
 		</div>
 	</div>

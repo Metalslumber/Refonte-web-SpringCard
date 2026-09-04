@@ -537,15 +537,28 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 	.feature-row.reverse .feature-media { order: 0; }
 }
 
-/* Hero avec visuel produit détouré (ex. Bureau d'études) : texte + image flottante. */
+/* Hero avec visuel produit détouré (ex. Bureau d'études) : texte + image incrustée
+   dans un panneau sombre (plutôt que flottante sur la page), pour un rendu plus
+   « produit » et éviter l'effet autocollant sur fond blanc. */
 .hero-split { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .hero-split-copy { flex: 1; min-width: 0; }
 .hero-split-visual { flex: 1; display: flex; justify-content: center; min-width: 0; }
 .hero-split-visual.reveal { transition-delay: 180ms; }
-.hero-split-visual img { max-width: 100%; width: 460px; height: auto; display: block; }
+.hero-visual-panel {
+	position: relative; overflow: hidden; width: 100%; max-width: 460px;
+	background: var(--sc-marine); border-radius: 16px;
+	display: flex; align-items: center; justify-content: center; padding: 40px;
+}
+.hero-visual-panel::before {
+	content: ""; position: absolute; inset: 0;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+	background-size: 22px 22px;
+}
+.hero-visual-panel img { position: relative; z-index: 1; max-width: 100%; width: 340px; height: auto; display: block; filter: drop-shadow(0 18px 28px rgba(0,0,0,.35)); }
 @media (max-width: 860px) {
 	.hero-split { flex-direction: column; }
-	.hero-split-visual img { width: 320px; }
+	.hero-visual-panel { max-width: 100%; padding: 32px; }
+	.hero-visual-panel img { width: 280px; }
 }
 
 /* Cartes "d'un coup d'œil" par variante. */
