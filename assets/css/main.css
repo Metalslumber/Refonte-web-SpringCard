@@ -541,6 +541,7 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 .hero-split { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .hero-split-copy { flex: 1; min-width: 0; }
 .hero-split-visual { flex: 1; display: flex; justify-content: center; min-width: 0; }
+.hero-split-visual.reveal { transition-delay: 180ms; }
 .hero-split-visual img { max-width: 100%; width: 460px; height: auto; display: block; }
 @media (max-width: 860px) {
 	.hero-split { flex-direction: column; }
