@@ -443,7 +443,10 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 .footer-bottom {
 	max-width: 1160px; margin: 0 auto; padding: 16px 28px 26px; border-top: 1px solid var(--sc-line);
 	color: var(--sc-muted); font-size: 0.8125rem;
+	display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px;
 }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.footer-legal a:hover { color: var(--sc-marine); }
 @media (max-width: 640px) {
 	.footer-inner { flex-direction: column; gap: 22px; }
 }
@@ -456,6 +459,8 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 .prose p { margin: 0 0 14px; }
 .prose p:last-child { margin-bottom: 0; }
 .prose ul, .prose ol { margin: 0 0 14px; padding-left: 20px; }
+.prose h2 { font-size: 1.1875rem; margin: 28px 0 12px; }
+.prose h2:first-child { margin-top: 0; }
 
 .tag {
 	display: inline-block; background: var(--sc-rouge-tint); color: var(--sc-rouge-deep); font-size: 0.8125rem; font-weight: 700;

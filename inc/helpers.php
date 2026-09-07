@@ -325,3 +325,25 @@ function springcard_get_contact_url() {
 	$url = springcard_get_page_url_by_template( 'page-a-propos.php' );
 	return $url ? trailingslashit( $url ) . '#contact' : '#';
 }
+
+/**
+ * Produits have no standalone page — a single gamme presents all its
+ * variantes together (comparison table). Redirect any direct hit on a
+ * produit's own URL to its gamme, anchored on that variante's card, instead
+ * of falling through to the generic index.php template.
+ */
+function springcard_redirect_single_produit() {
+	if ( ! is_singular( 'produit' ) ) {
+		return;
+	}
+	$produit_id = get_the_ID();
+	$gamme_id   = (int) get_post_meta( $produit_id, '_gamme_id', true );
+	$gamme_url  = $gamme_id ? get_permalink( $gamme_id ) : false;
+
+	if ( ! $gamme_url ) {
+		return;
+	}
+	wp_safe_redirect( $gamme_url . '#produit-' . get_post_field( 'post_name', $produit_id ), 301 );
+	exit;
+}
+add_action( 'template_redirect', 'springcard_redirect_single_produit' );

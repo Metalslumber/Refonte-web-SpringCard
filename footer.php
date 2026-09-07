@@ -59,13 +59,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 
 	<div class="footer-bottom">
+		<span>
+			<?php
+			printf(
+				/* translators: %s: current year. */
+				esc_html__( '© %s SpringCard', 'springcard' ),
+				esc_html( gmdate( 'Y' ) )
+			);
+			?>
+		</span>
 		<?php
-		printf(
-			/* translators: %s: current year. */
-			esc_html__( '© %s SpringCard', 'springcard' ),
-			esc_html( gmdate( 'Y' ) )
+		$legal_pages = get_posts(
+			array(
+				'post_type'      => 'page',
+				'posts_per_page' => -1,
+				'meta_key'       => '_wp_page_template',
+				'meta_value'     => 'page-legal.php',
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+			)
 		);
-		?>
+		if ( $legal_pages ) :
+			?>
+			<nav class="footer-legal" aria-label="<?php esc_attr_e( 'Liens légaux', 'springcard' ); ?>">
+				<?php foreach ( $legal_pages as $legal_page ) : ?>
+					<a href="<?php echo esc_url( get_permalink( $legal_page ) ); ?>"><?php echo esc_html( get_the_title( $legal_page ) ); ?></a>
+				<?php endforeach; ?>
+			</nav>
+		<?php endif; ?>
 	</div>
 </footer>
 

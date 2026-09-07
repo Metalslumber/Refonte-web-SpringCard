@@ -142,7 +142,7 @@ while ( have_posts() ) :
 				$type_antenne = get_post_meta( $variante->ID, '_type_antenne', true );
 				$pdf_url      = springcard_get_fiche_technique_url( $variante->ID );
 				?>
-				<div class="glance-card reveal">
+				<div class="glance-card reveal" id="produit-<?php echo esc_attr( $variante->post_name ); ?>">
 					<div class="glance-media">
 						<?php if ( $type_antenne ) : ?>
 							<span class="tag-overlay"><?php echo esc_html( springcard_antenne_label( $type_antenne ) ); ?></span>
