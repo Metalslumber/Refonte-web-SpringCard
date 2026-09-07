@@ -169,11 +169,6 @@ a:focus-visible {
 
 .header-actions { display: flex; align-items: center; gap: 10px; }
 
-.lang-switch { display: flex; align-items: center; gap: 2px; font-family: var(--sc-mono); font-size: 0.75rem; font-weight: 600; }
-.lang-switch a { padding: 5px 7px; border-radius: 6px; color: var(--sc-muted); }
-.lang-switch a:hover { color: var(--sc-marine); background: var(--sc-surface); }
-.lang-switch a.active { color: var(--sc-marine); background: var(--sc-surface); }
-
 .screen-reader-text:focus {
 	position: static !important;
 	clip: auto !important;

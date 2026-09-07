@@ -44,20 +44,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 		<div class="header-actions">
-			<?php if ( function_exists( 'pll_the_languages' ) ) : ?>
-				<?php $springcard_languages = pll_the_languages( array( 'raw' => 1 ) ); ?>
-				<?php if ( $springcard_languages ) : ?>
-					<nav class="lang-switch" aria-label="<?php esc_attr_e( 'Changer de langue', 'springcard' ); ?>">
-						<?php foreach ( $springcard_languages as $springcard_lang ) : ?>
-							<a
-								href="<?php echo esc_url( $springcard_lang['url'] ); ?>"
-								class="<?php echo $springcard_lang['current_lang'] ? 'active' : ''; ?>"
-								<?php echo $springcard_lang['current_lang'] ? 'aria-current="true"' : ''; ?>
-							><?php echo esc_html( strtoupper( $springcard_lang['slug'] ) ); ?></a>
-						<?php endforeach; ?>
-					</nav>
-				<?php endif; ?>
-			<?php endif; ?>
 			<a class="header-cta" href="<?php echo esc_url( springcard_get_contact_url() ); ?>"><?php esc_html_e( 'Contact', 'springcard' ); ?></a>
 			<button type="button" class="navtoggle" id="navtoggle" aria-label="<?php esc_attr_e( 'Ouvrir le menu', 'springcard' ); ?>" aria-expanded="false" aria-controls="mainnav">☰</button>
 		</div>
