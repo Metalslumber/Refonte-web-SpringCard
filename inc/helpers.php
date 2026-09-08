@@ -347,3 +347,32 @@ function springcard_redirect_single_produit() {
 	exit;
 }
 add_action( 'template_redirect', 'springcard_redirect_single_produit' );
+
+/**
+ * Renders the Contact Form 7 form seeded by the blueprint (tagged with
+ * _springcard_seed_key = contact_form), or a mailto: fallback if Contact
+ * Form 7 isn't active / the form hasn't been created yet.
+ *
+ * @return string HTML.
+ */
+function springcard_get_contact_form_html() {
+	$forms = get_posts(
+		array(
+			'post_type'      => 'wpcf7_contact_form',
+			'posts_per_page' => 1,
+			'meta_key'       => '_springcard_seed_key',
+			'meta_value'     => 'contact_form',
+		)
+	);
+
+	if ( $forms && shortcode_exists( 'contact-form-7' ) ) {
+		return do_shortcode( '[contact-form-7 id="' . absint( $forms[0]->ID ) . '"]' );
+	}
+
+	$contact_email = get_option( 'admin_email' );
+	return sprintf(
+		'<a class="btn btn-primary" href="%s">%s</a>',
+		esc_url( 'mailto:' . antispambot( $contact_email ) ),
+		esc_html__( 'Envoyer un message', 'springcard' )
+	);
+}
