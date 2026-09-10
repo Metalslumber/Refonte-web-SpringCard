@@ -30,7 +30,6 @@ while ( have_posts() ) :
 			'order'          => 'DESC',
 		)
 	);
-	$contact_email = get_option( 'admin_email' );
 	?>
 
 	<div class="section reveal" style="padding-top:20px;">
@@ -80,12 +79,10 @@ while ( have_posts() ) :
 		</div>
 
 		<div data-tab-panel="contact" role="tabpanel" style="display:none;">
-			<div class="card reveal" style="max-width:420px;">
+			<div class="card reveal contact-card">
 				<h3><?php esc_html_e( 'Nous contacter', 'springcard' ); ?></h3>
 				<p style="margin-bottom:14px;"><?php esc_html_e( 'Une question technique, commerciale, ou un projet à décrire, écrivez-nous.', 'springcard' ); ?></p>
-				<a class="btn btn-primary" href="<?php echo esc_url( 'mailto:' . antispambot( $contact_email ) ); ?>">
-					<?php esc_html_e( 'Envoyer un message', 'springcard' ); ?>
-				</a>
+				<?php echo springcard_get_contact_form_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- returns either the CF7 shortcode markup or an already-escaped mailto fallback. ?>
 			</div>
 		</div>
 	</div>
