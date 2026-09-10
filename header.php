@@ -51,3 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </header>
 
 <main id="main-content">
+
+<?php if ( ! is_front_page() && function_exists( 'rank_math_the_breadcrumbs' ) ) : ?>
+	<?php rank_math_the_breadcrumbs(); ?>
+<?php endif; ?>

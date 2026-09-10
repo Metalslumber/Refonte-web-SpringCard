@@ -83,6 +83,31 @@ h1, h2, h3 {
 	display: inline-block;
 }
 
+.rank-math-breadcrumb {
+	padding-top: 18px;
+}
+.rank-math-breadcrumb p {
+	margin: 0;
+	font-size: 0.8125rem;
+	color: var(--sc-ardoise);
+}
+.rank-math-breadcrumb a {
+	color: var(--sc-ardoise);
+	text-decoration: none;
+}
+.rank-math-breadcrumb a:hover {
+	color: var(--sc-rouge-deep);
+	text-decoration: underline;
+}
+.rank-math-breadcrumb .separator {
+	margin: 0 4px;
+	color: var(--sc-line-strong);
+}
+.rank-math-breadcrumb .last {
+	color: var(--sc-marine);
+	font-weight: 600;
+}
+
 .screen-reader-text {
 	position: absolute !important;
 	clip: rect(1px, 1px, 1px, 1px);
