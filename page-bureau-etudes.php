@@ -55,7 +55,7 @@ while ( have_posts() ) :
 		<div class="section-head reveal"><div class="eyebrow"><?php esc_html_e( 'Expertises', 'springcard' ); ?></div></div>
 		<div class="grid grid-3">
 			<?php foreach ( $expertises as $expertise ) : ?>
-				<div class="card reveal">
+				<div class="card reveal" id="expertise-<?php echo esc_attr( $expertise->post_name ); ?>">
 					<?php $code = get_post_meta( $expertise->ID, '_code', true ); ?>
 					<?php if ( $code ) : ?>
 						<div class="ic"><?php echo esc_html( $code ); ?></div>
