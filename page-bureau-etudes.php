@@ -14,7 +14,10 @@ get_header();
 while ( have_posts() ) :
 	the_post();
 
-	$contact_url = springcard_get_contact_url();
+	$contact_url   = springcard_get_contact_url();
+	$solutions_url = springcard_get_page_url_by_template( 'page-solutions.php' );
+	$gammes        = springcard_get_gammes_actives();
+	$gamme_url     = ! empty( $gammes ) ? get_permalink( $gammes[0] ) : '';
 	$expertises  = get_posts(
 		array(
 			'post_type'      => 'expertise',
@@ -52,7 +55,20 @@ while ( have_posts() ) :
 
 	<?php if ( ! empty( $expertises ) ) : ?>
 	<div class="section">
-		<div class="section-head reveal"><div class="eyebrow"><?php esc_html_e( 'Expertises', 'springcard' ); ?></div></div>
+		<div class="section-head reveal">
+			<div class="eyebrow"><?php esc_html_e( 'Expertises', 'springcard' ); ?></div>
+			<?php if ( $solutions_url ) : ?>
+				<p class="prose">
+					<?php
+					printf(
+						/* translators: %s: lien vers la page Solutions. */
+						wp_kses_post( __( 'Ces expertises sont mobilisées sur des projets RFID/NFC de %s.', 'springcard' ) ),
+						'<a href="' . esc_url( $solutions_url ) . '">' . esc_html__( 'tous secteurs', 'springcard' ) . '</a>'
+					);
+					?>
+				</p>
+			<?php endif; ?>
+		</div>
 		<div class="grid grid-3">
 			<?php foreach ( $expertises as $expertise ) : ?>
 				<div class="card reveal" id="expertise-<?php echo esc_attr( $expertise->post_name ); ?>">
@@ -90,7 +106,19 @@ while ( have_posts() ) :
 		<div class="grid grid-3">
 			<div class="card reveal">
 				<h3><?php esc_html_e( 'Accélérer votre produit', 'springcard' ); ?></h3>
-				<p><?php esc_html_e( "Vous partez du M519 ou d'une architecture existante. Nous traitons les points spécialisés : antenne, intégration RF, protocole, carte sécurisée, cryptographie, pilote ou logiciel embarqué.", 'springcard' ); ?></p>
+				<p>
+						<?php
+						if ( $gamme_url ) {
+							printf(
+								/* translators: %s: lien vers la gamme M519. */
+								wp_kses_post( __( "Vous partez du %s ou d'une architecture existante. Nous traitons les points spécialisés : antenne, intégration RF, protocole, carte sécurisée, cryptographie, pilote ou logiciel embarqué.", 'springcard' ) ),
+								'<a href="' . esc_url( $gamme_url ) . '">' . esc_html__( 'M519', 'springcard' ) . '</a>'
+							);
+						} else {
+							esc_html_e( "Vous partez du M519 ou d'une architecture existante. Nous traitons les points spécialisés : antenne, intégration RF, protocole, carte sécurisée, cryptographie, pilote ou logiciel embarqué.", 'springcard' );
+						}
+						?>
+					</p>
 			</div>
 			<div class="card reveal">
 				<h3><?php esc_html_e( 'Explorer une nouvelle voie', 'springcard' ); ?></h3>

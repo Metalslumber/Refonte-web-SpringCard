@@ -14,7 +14,9 @@ get_header();
 while ( have_posts() ) :
 	the_post();
 
-	$bureau_url = springcard_get_page_url_by_template( 'page-bureau-etudes.php' );
+	$bureau_url  = springcard_get_page_url_by_template( 'page-bureau-etudes.php' );
+	$gammes      = springcard_get_gammes_actives();
+	$gamme_url   = ! empty( $gammes ) ? get_permalink( $gammes[0] ) : '';
 	$secteurs   = get_posts(
 		array(
 			'post_type'      => 'secteur',
@@ -37,6 +39,17 @@ while ( have_posts() ) :
 		<h1 style="font-size:1.875rem; max-width:560px; margin-bottom:14px;"><?php the_title(); ?></h1>
 		<?php if ( get_the_content() ) : ?>
 			<div class="prose" style="max-width:540px;"><?php the_content(); ?></div>
+		<?php endif; ?>
+		<?php if ( $gamme_url ) : ?>
+			<p class="prose" style="max-width:540px; margin-top:10px;">
+				<?php
+				printf(
+					/* translators: %s: lien vers la gamme M519. */
+					wp_kses_post( __( 'Toutes ces solutions s\'appuient sur %s, notre module RFID/NFC OEM.', 'springcard' ) ),
+					'<a href="' . esc_url( $gamme_url ) . '">' . esc_html__( 'la gamme M519', 'springcard' ) . '</a>'
+				);
+				?>
+			</p>
 		<?php endif; ?>
 	</div>
 

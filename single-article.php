@@ -13,6 +13,11 @@ get_header();
 
 while ( have_posts() ) :
 	the_post();
+
+	$bureau_url    = springcard_get_page_url_by_template( 'page-bureau-etudes.php' );
+	$solutions_url = springcard_get_page_url_by_template( 'page-solutions.php' );
+	$gammes        = springcard_get_gammes_actives();
+	$gamme_url     = ! empty( $gammes ) ? get_permalink( $gammes[0] ) : '';
 	?>
 
 	<div class="section reveal" style="padding-top:20px;">
@@ -30,7 +35,35 @@ while ( have_posts() ) :
 		<?php endif; ?>
 
 		<div class="prose"><?php the_content(); ?></div>
+
+		<?php if ( $gamme_url || $solutions_url || $bureau_url ) : ?>
+			<div class="single-tags">
+				<?php if ( $gamme_url ) : ?>
+					<a class="tag" href="<?php echo esc_url( $gamme_url ); ?>"><?php esc_html_e( 'Gamme M519', 'springcard' ); ?></a>
+				<?php endif; ?>
+				<?php if ( $solutions_url ) : ?>
+					<a class="tag" href="<?php echo esc_url( $solutions_url ); ?>"><?php esc_html_e( 'Solutions RFID/NFC par secteur', 'springcard' ); ?></a>
+				<?php endif; ?>
+				<?php if ( $bureau_url ) : ?>
+					<a class="tag" href="<?php echo esc_url( $bureau_url ); ?>"><?php esc_html_e( "Bureau d'études", 'springcard' ); ?></a>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
 	</div>
+
+	<?php if ( $bureau_url ) : ?>
+	<div class="section">
+		<div class="cta-banner reveal">
+			<div>
+				<h3><?php esc_html_e( 'Un projet RFID/NFC en tête ?', 'springcard' ); ?></h3>
+				<p><?php esc_html_e( "Notre bureau d'études conçoit des lecteurs sur mesure autour de la gamme M519.", 'springcard' ); ?></p>
+			</div>
+			<a class="btn btn-primary" href="<?php echo esc_url( $bureau_url ); ?>">
+				<?php esc_html_e( 'Parler à un ingénieur', 'springcard' ); ?>
+			</a>
+		</div>
+	</div>
+	<?php endif; ?>
 
 	<?php
 endwhile;
