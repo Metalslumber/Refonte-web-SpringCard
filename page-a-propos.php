@@ -32,9 +32,14 @@ while ( have_posts() ) :
 			<div class="prose" style="margin-bottom:24px;"><?php the_content(); ?></div>
 		<?php endif; ?>
 
-		<div class="pillbar" data-tabs role="tablist" aria-label="<?php esc_attr_e( 'Sections de la page À propos', 'springcard' ); ?>">
-			<button type="button" class="active" data-tab-trigger="blog" role="tab" aria-selected="true"><?php esc_html_e( 'Blog', 'springcard' ); ?></button>
-			<button type="button" data-tab-trigger="contact" role="tab" aria-selected="false"><?php esc_html_e( 'Contact', 'springcard' ); ?></button>
+		<div class="pillbar-row">
+			<div class="pillbar" data-tabs role="tablist" aria-label="<?php esc_attr_e( 'Sections de la page À propos', 'springcard' ); ?>">
+				<button type="button" class="active" data-tab-trigger="blog" role="tab" aria-selected="true"><?php esc_html_e( 'Blog', 'springcard' ); ?></button>
+				<button type="button" data-tab-trigger="contact" role="tab" aria-selected="false"><?php esc_html_e( 'Contact', 'springcard' ); ?></button>
+			</div>
+			<a class="external-link" href="https://tech.springcard.com/" target="_blank" rel="noopener noreferrer">
+				<?php esc_html_e( 'Blog technique', 'springcard' ); ?> ↗
+			</a>
 		</div>
 
 		<div data-tab-panel="blog" role="tabpanel">
