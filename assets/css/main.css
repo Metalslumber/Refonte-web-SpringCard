@@ -273,12 +273,18 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 	.wpcf7-form .form-row { grid-template-columns: 1fr; }
 }
 .wpcf7-form-control-wrap { display: block; margin-top: 6px; }
-.wpcf7-form-control {
+/* CF7 met la classe "wpcf7-form-control" à la fois sur les vrais champs de
+   saisie (input/textarea) et sur le conteneur des groupes radio/case à
+   cocher — on ne doit habiller que les premiers, sinon les groupes héritent
+   à tort d'une bordure/fond de champ texte vide. */
+input.wpcf7-form-control,
+textarea.wpcf7-form-control {
 	width: 100%; font-family: var(--sc-body); font-size: 0.9375rem;
 	padding: 10px 12px; border: 1px solid var(--sc-line); border-radius: 8px;
 	background: #fff; color: var(--sc-marine);
 }
-.wpcf7-form-control:focus-visible { outline: 2px solid var(--sc-rouge); outline-offset: 1px; }
+input.wpcf7-form-control:focus-visible,
+textarea.wpcf7-form-control:focus-visible { outline: 2px solid var(--sc-rouge); outline-offset: 1px; }
 .wpcf7-form textarea.wpcf7-form-control { min-height: 120px; resize: vertical; }
 .wpcf7-not-valid-tip { color: var(--sc-rouge-deep); font-size: 0.8125rem; font-weight: 600; margin-top: 4px; }
 .wpcf7-form input[type="submit"] {
