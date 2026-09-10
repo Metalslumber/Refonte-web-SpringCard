@@ -349,6 +349,41 @@ function springcard_redirect_single_produit() {
 add_action( 'template_redirect', 'springcard_redirect_single_produit' );
 
 /**
+ * Secteurs have no standalone page either — they're presented as anchored
+ * cards on the Solutions page. Redirect any direct hit on a secteur's own
+ * URL there instead of the generic index.php template.
+ */
+function springcard_redirect_single_secteur() {
+	if ( ! is_singular( 'secteur' ) ) {
+		return;
+	}
+	$solutions_url = springcard_get_page_url_by_template( 'page-solutions.php' );
+	if ( ! $solutions_url ) {
+		return;
+	}
+	wp_safe_redirect( $solutions_url . '#sector-' . get_post_field( 'post_name', get_the_ID() ), 301 );
+	exit;
+}
+add_action( 'template_redirect', 'springcard_redirect_single_secteur' );
+
+/**
+ * Same situation for expertises: anchored cards on the Bureau d'études page,
+ * no standalone template.
+ */
+function springcard_redirect_single_expertise() {
+	if ( ! is_singular( 'expertise' ) ) {
+		return;
+	}
+	$bureau_url = springcard_get_page_url_by_template( 'page-bureau-etudes.php' );
+	if ( ! $bureau_url ) {
+		return;
+	}
+	wp_safe_redirect( $bureau_url . '#expertise-' . get_post_field( 'post_name', get_the_ID() ), 301 );
+	exit;
+}
+add_action( 'template_redirect', 'springcard_redirect_single_expertise' );
+
+/**
  * Renders the Contact Form 7 form seeded by the blueprint (tagged with
  * _springcard_seed_key = contact_form), or a mailto: fallback if Contact
  * Form 7 isn't active / the form hasn't been created yet.

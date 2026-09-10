@@ -518,6 +518,17 @@ table.compare th:not(:first-child), table.compare td:not(:first-child) { text-al
 	padding: 4px 10px; border-radius: 999px;
 }
 .tag-tech { background: #E9EEF1; color: var(--sc-ardoise); }
+a.tag:hover { filter: brightness(0.96); }
+
+/* Gabarits "single" (cas d'usage, article, article technique) : image
+   d'en-tête, ligne méta, tags de secteurs/rubrique liés en bas de contenu. */
+.single-hero-img {
+	width: 100%; aspect-ratio: 16 / 7; border-radius: 14px; overflow: hidden;
+	background: var(--sc-surface); margin: 20px 0 28px;
+}
+.single-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.single-meta { display: flex; gap: 12px; align-items: center; color: var(--sc-muted); font-size: 0.875rem; margin-bottom: 4px; flex-wrap: wrap; }
+.single-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
 
 /* Animations d'apparition au scroll */
 .reveal {
