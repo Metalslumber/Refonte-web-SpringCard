@@ -1,6 +1,9 @@
 <?php
 /**
- * Custom post types: gamme, produit, secteur, cas_usage, expertise, article, article_technique.
+ * Custom post types: gamme, produit, secteur, cas_usage, expertise, article.
+ *
+ * Pas de CPT "article_technique" : le blog technique reste hébergé
+ * séparément sur tech.springcard.com, pas de contenu de ce type géré ici.
  *
  * @package SpringCard
  */
@@ -122,20 +125,6 @@ function springcard_register_post_types() {
 			'supports'      => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 			'rewrite'       => array( 'slug' => 'blog', 'with_front' => false ),
 			'menu_position' => 25,
-		)
-	);
-
-	register_post_type(
-		'article_technique',
-		array(
-			'labels'        => springcard_cpt_labels( __( 'Article technique', 'springcard' ), __( 'Blog technique', 'springcard' ) ),
-			'public'        => true,
-			'has_archive'   => true,
-			'show_in_rest'  => true,
-			'menu_icon'     => 'dashicons-editor-code',
-			'supports'      => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
-			'rewrite'       => array( 'slug' => 'blog-technique', 'with_front' => false ),
-			'menu_position' => 26,
 		)
 	);
 

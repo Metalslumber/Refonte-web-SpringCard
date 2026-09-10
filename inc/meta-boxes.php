@@ -8,7 +8,6 @@
  * - secteur:           _icone
  * - cas_usage:         _client, _secteurs (array), _produits (array)
  * - expertise:         _code
- * - article_technique: _gamme_id, _produit_id
  *
  * @package SpringCard
  */
@@ -57,8 +56,6 @@ function springcard_register_meta_boxes() {
 	add_meta_box( 'springcard_cas_usage_details', __( "Détails du cas d'usage", 'springcard' ), 'springcard_render_cas_usage_metabox', 'cas_usage', 'normal', 'default' );
 
 	add_meta_box( 'springcard_expertise_details', __( 'Code affiché', 'springcard' ), 'springcard_render_expertise_metabox', 'expertise', 'side', 'default' );
-
-	add_meta_box( 'springcard_article_technique_details', __( 'Ressource associée', 'springcard' ), 'springcard_render_article_technique_metabox', 'article_technique', 'side', 'default' );
 
 	add_meta_box( 'springcard_logo_client_details', __( 'Lien du client', 'springcard' ), 'springcard_render_logo_client_metabox', 'logo_client', 'side', 'default' );
 }
@@ -262,38 +259,6 @@ function springcard_render_expertise_metabox( $post ) {
 	);
 }
 
-function springcard_render_article_technique_metabox( $post ) {
-	wp_nonce_field( 'springcard_save_article_technique', 'springcard_article_technique_nonce' );
-
-	$gamme_id   = (int) get_post_meta( $post->ID, '_gamme_id', true );
-	$produit_id = (int) get_post_meta( $post->ID, '_produit_id', true );
-
-	echo '<p><label for="springcard_at_gamme_id">' . esc_html__( 'Gamme liée (optionnel)', 'springcard' ) . '</label><br />';
-	echo '<select name="springcard_gamme_id" id="springcard_at_gamme_id" style="width:100%;">';
-	echo '<option value="0">' . esc_html__( 'Aucune', 'springcard' ) . '</option>';
-	foreach ( get_posts( array( 'post_type' => 'gamme', 'posts_per_page' => -1 ) ) as $gamme ) {
-		printf(
-			'<option value="%1$d" %2$s>%3$s</option>',
-			esc_attr( $gamme->ID ),
-			selected( $gamme_id, $gamme->ID, false ),
-			esc_html( get_the_title( $gamme ) )
-		);
-	}
-	echo '</select></p>';
-
-	echo '<p><label for="springcard_at_produit_id">' . esc_html__( 'Produit lié (optionnel)', 'springcard' ) . '</label><br />';
-	echo '<select name="springcard_produit_id" id="springcard_at_produit_id" style="width:100%;">';
-	echo '<option value="0">' . esc_html__( 'Aucun', 'springcard' ) . '</option>';
-	foreach ( get_posts( array( 'post_type' => 'produit', 'posts_per_page' => -1 ) ) as $produit ) {
-		printf(
-			'<option value="%1$d" %2$s>%3$s</option>',
-			esc_attr( $produit->ID ),
-			selected( $produit_id, $produit->ID, false ),
-			esc_html( get_the_title( $produit ) )
-		);
-	}
-	echo '</select></p>';
-}
 
 function springcard_render_logo_client_metabox( $post ) {
 	wp_nonce_field( 'springcard_save_logo_client', 'springcard_logo_client_nonce' );
@@ -435,24 +400,6 @@ function springcard_save_expertise_meta( $post_id ) {
 	update_post_meta( $post_id, '_code', sanitize_text_field( wp_unslash( $_POST['springcard_code'] ) ) );
 }
 add_action( 'save_post_expertise', 'springcard_save_expertise_meta' );
-
-function springcard_save_article_technique_meta( $post_id ) {
-	if ( ! springcard_meta_save_allowed( $post_id ) ) {
-		return;
-	}
-	if ( ! isset( $_POST['springcard_article_technique_nonce'] )
-		|| ! wp_verify_nonce( wp_unslash( $_POST['springcard_article_technique_nonce'] ), 'springcard_save_article_technique' )
-	) {
-		return;
-	}
-	if ( isset( $_POST['springcard_gamme_id'] ) ) {
-		update_post_meta( $post_id, '_gamme_id', absint( $_POST['springcard_gamme_id'] ) );
-	}
-	if ( isset( $_POST['springcard_produit_id'] ) ) {
-		update_post_meta( $post_id, '_produit_id', absint( $_POST['springcard_produit_id'] ) );
-	}
-}
-add_action( 'save_post_article_technique', 'springcard_save_article_technique_meta' );
 
 function springcard_save_logo_client_meta( $post_id ) {
 	if ( ! springcard_meta_save_allowed( $post_id ) ) {

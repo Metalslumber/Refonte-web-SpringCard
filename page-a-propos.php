@@ -22,14 +22,6 @@ while ( have_posts() ) :
 			'order'          => 'DESC',
 		)
 	);
-	$articles_techniques = get_posts(
-		array(
-			'post_type'      => 'article_technique',
-			'posts_per_page' => 3,
-			'orderby'        => 'date',
-			'order'          => 'DESC',
-		)
-	);
 	?>
 
 	<div class="section reveal" style="padding-top:20px;">
@@ -42,7 +34,6 @@ while ( have_posts() ) :
 
 		<div class="pillbar" data-tabs role="tablist" aria-label="<?php esc_attr_e( 'Sections de la page À propos', 'springcard' ); ?>">
 			<button type="button" class="active" data-tab-trigger="blog" role="tab" aria-selected="true"><?php esc_html_e( 'Blog', 'springcard' ); ?></button>
-			<button type="button" data-tab-trigger="blog-technique" role="tab" aria-selected="false"><?php esc_html_e( 'Blog technique', 'springcard' ); ?></button>
 			<button type="button" data-tab-trigger="contact" role="tab" aria-selected="false"><?php esc_html_e( 'Contact', 'springcard' ); ?></button>
 		</div>
 
@@ -59,22 +50,6 @@ while ( have_posts() ) :
 				</div>
 			<?php else : ?>
 				<p class="prose"><?php esc_html_e( 'Aucun article pour le moment.', 'springcard' ); ?></p>
-			<?php endif; ?>
-		</div>
-
-		<div data-tab-panel="blog-technique" role="tabpanel" style="display:none;">
-			<?php if ( ! empty( $articles_techniques ) ) : ?>
-				<div class="grid grid-3">
-					<?php foreach ( $articles_techniques as $article ) : ?>
-						<a class="card reveal" href="<?php echo esc_url( get_permalink( $article ) ); ?>">
-							<span class="tag tag-tech"><?php esc_html_e( 'Technique', 'springcard' ); ?></span>
-							<h3 style="margin-top:10px;"><?php echo esc_html( get_the_title( $article ) ); ?></h3>
-							<p><?php echo esc_html( get_the_excerpt( $article ) ); ?></p>
-						</a>
-					<?php endforeach; ?>
-				</div>
-			<?php else : ?>
-				<p class="prose"><?php esc_html_e( 'Aucun article technique pour le moment.', 'springcard' ); ?></p>
 			<?php endif; ?>
 		</div>
 
