@@ -18,18 +18,22 @@ while ( have_posts() ) :
 	$gammes      = springcard_get_gammes_actives();
 	$gamme_url   = ! empty( $gammes ) ? get_permalink( $gammes[0] ) : '';
 	$secteurs   = get_posts(
-		array(
-			'post_type'      => 'secteur',
-			'posts_per_page' => -1,
-			'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+		springcard_lang_filter(
+			array(
+				'post_type'      => 'secteur',
+				'posts_per_page' => -1,
+				'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+			)
 		)
 	);
 	$case_study = get_posts(
-		array(
-			'post_type'      => 'cas_usage',
-			'posts_per_page' => 1,
-			'orderby'        => 'date',
-			'order'          => 'DESC',
+		springcard_lang_filter(
+			array(
+				'post_type'      => 'cas_usage',
+				'posts_per_page' => 1,
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+			)
 		)
 	);
 	?>

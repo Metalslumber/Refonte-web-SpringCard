@@ -17,10 +17,12 @@ $bureau_url       = springcard_get_page_url_by_template( 'page-bureau-etudes.php
 $solutions_url    = springcard_get_page_url_by_template( 'page-solutions.php' );
 $produits_actifs  = springcard_get_produits_actifs();
 $secteurs         = get_posts(
-	array(
-		'post_type'      => 'secteur',
-		'posts_per_page' => -1,
-		'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+	springcard_lang_filter(
+		array(
+			'post_type'      => 'secteur',
+			'posts_per_page' => -1,
+			'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+		)
 	)
 );
 $logos_clients    = springcard_get_client_logos();

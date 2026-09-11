@@ -16,12 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function springcard_get_gammes_actives() {
 	return get_posts(
-		array(
-			'post_type'      => 'gamme',
-			'posts_per_page' => -1,
-			'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
-			'meta_key'       => '_statut',
-			'meta_value'     => 'actif',
+		springcard_lang_filter(
+			array(
+				'post_type'      => 'gamme',
+				'posts_per_page' => -1,
+				'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+				'meta_key'       => '_statut',
+				'meta_value'     => 'actif',
+			)
 		)
 	);
 }
@@ -86,7 +88,7 @@ function springcard_get_produits_actifs( $gamme_id = null ) {
 		);
 	}
 
-	return springcard_sort_produits_by_antenne( get_posts( $args ) );
+	return springcard_sort_produits_by_antenne( get_posts( springcard_lang_filter( $args ) ) );
 }
 
 /**
@@ -99,11 +101,13 @@ function springcard_get_produits_actifs( $gamme_id = null ) {
  */
 function springcard_get_produits_de_gamme( $gamme_id ) {
 	$produits = get_posts(
-		array(
-			'post_type'      => 'produit',
-			'posts_per_page' => -1,
-			'meta_key'       => '_gamme_id',
-			'meta_value'     => (int) $gamme_id,
+		springcard_lang_filter(
+			array(
+				'post_type'      => 'produit',
+				'posts_per_page' => -1,
+				'meta_key'       => '_gamme_id',
+				'meta_value'     => (int) $gamme_id,
+			)
 		)
 	);
 	return springcard_sort_produits_by_antenne( $produits );
@@ -122,16 +126,18 @@ function springcard_get_cas_usage_by( $relation, $id ) {
 	}
 
 	return get_posts(
-		array(
-			'post_type'      => 'cas_usage',
-			'posts_per_page' => -1,
-			'meta_query'     => array(
-				array(
-					'key'     => $relation,
-					'value'   => sprintf( ':%d;', (int) $id ),
-					'compare' => 'LIKE',
+		springcard_lang_filter(
+			array(
+				'post_type'      => 'cas_usage',
+				'posts_per_page' => -1,
+				'meta_query'     => array(
+					array(
+						'key'     => $relation,
+						'value'   => sprintf( ':%d;', (int) $id ),
+						'compare' => 'LIKE',
+					),
 				),
-			),
+			)
 		)
 	);
 }
@@ -305,11 +311,13 @@ function springcard_the_logo() {
  */
 function springcard_get_page_url_by_template( $template ) {
 	$pages = get_posts(
-		array(
-			'post_type'      => 'page',
-			'posts_per_page' => 1,
-			'meta_key'       => '_wp_page_template',
-			'meta_value'     => $template,
+		springcard_lang_filter(
+			array(
+				'post_type'      => 'page',
+				'posts_per_page' => 1,
+				'meta_key'       => '_wp_page_template',
+				'meta_value'     => $template,
+			)
 		)
 	);
 	return $pages ? get_permalink( $pages[0] ) : '';

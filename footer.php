@@ -70,13 +70,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</span>
 		<?php
 		$legal_pages = get_posts(
-			array(
-				'post_type'      => 'page',
-				'posts_per_page' => -1,
-				'meta_key'       => '_wp_page_template',
-				'meta_value'     => 'page-legal.php',
-				'orderby'        => 'menu_order',
-				'order'          => 'ASC',
+			springcard_lang_filter(
+				array(
+					'post_type'      => 'page',
+					'posts_per_page' => -1,
+					'meta_key'       => '_wp_page_template',
+					'meta_value'     => 'page-legal.php',
+					'orderby'        => 'menu_order',
+					'order'          => 'ASC',
+				)
 			)
 		);
 		if ( $legal_pages ) :

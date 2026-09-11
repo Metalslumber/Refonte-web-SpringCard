@@ -15,11 +15,13 @@ while ( have_posts() ) :
 	the_post();
 
 	$articles           = get_posts(
-		array(
-			'post_type'      => 'article',
-			'posts_per_page' => 3,
-			'orderby'        => 'date',
-			'order'          => 'DESC',
+		springcard_lang_filter(
+			array(
+				'post_type'      => 'article',
+				'posts_per_page' => 3,
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+			)
 		)
 	);
 	?>
