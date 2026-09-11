@@ -44,8 +44,8 @@
     {
       "step": "installPlugin",
       "pluginData": {
-        "resource": "wordpress.org/plugins",
-        "slug": "polylang"
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/polylang.latest-stable.zip"
       },
       "options": {
         "activate": true
