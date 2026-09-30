@@ -32,15 +32,15 @@ $logos_clients    = springcard_get_client_logos();
 	<?php get_template_part( 'template-parts/hero-video' ); ?>
 	<div class="hero-scrim"></div>
 	<div class="hero-inner">
-		<div class="eyebrow"><?php esc_html_e( 'Module RFID / NFC OEM', 'springcard' ); ?></div>
+		<div class="eyebrow"><?php springcard_e( 'Module RFID / NFC OEM' ); ?></div>
 		<h1><?php echo esc_html( springcard_home_text( 'springcard_home_hero_title' ) ); ?></h1>
 		<p class="lead"><?php echo esc_html( springcard_home_text( 'springcard_home_hero_lead' ) ); ?></p>
 		<div class="btn-row">
 			<a class="btn btn-primary" href="<?php echo esc_url( $gamme_principale ? get_permalink( $gamme_principale ) : '#' ); ?>">
-				<?php esc_html_e( 'Découvrir la gamme M519', 'springcard' ); ?>
+				<?php springcard_e( 'Découvrir la gamme M519' ); ?>
 			</a>
 			<a class="btn btn-ghost" href="<?php echo esc_url( $bureau_url ? $bureau_url : '#' ); ?>">
-				<?php esc_html_e( 'Parler à un ingénieur', 'springcard' ); ?>
+				<?php springcard_e( 'Parler à un ingénieur' ); ?>
 			</a>
 		</div>
 	</div>
@@ -66,9 +66,9 @@ $logos_clients    = springcard_get_client_logos();
 <?php if ( ! empty( $produits_actifs ) ) : ?>
 <div class="section">
 	<div class="section-head reveal">
-		<div class="eyebrow"><?php esc_html_e( 'La gamme', 'springcard' ); ?></div>
-		<h2><?php esc_html_e( 'Trois configurations, une même liberté', 'springcard' ); ?></h2>
-		<p><?php esc_html_e( 'Chaque variante correspond à un niveau différent de liberté sur le design du produit final.', 'springcard' ); ?></p>
+		<div class="eyebrow"><?php springcard_e( 'La gamme' ); ?></div>
+		<h2><?php springcard_e( 'Trois configurations, une même liberté' ); ?></h2>
+		<p><?php springcard_e( 'Chaque variante correspond à un niveau différent de liberté sur le design du produit final.' ); ?></p>
 	</div>
 	<div class="glance-grid">
 		<?php
@@ -91,7 +91,7 @@ $logos_clients    = springcard_get_client_logos();
 				<div class="glance-body">
 					<h3><?php echo esc_html( get_the_title( $produit ) ); ?></h3>
 					<p><?php echo esc_html( get_the_excerpt( $produit ) ); ?></p>
-					<span class="go"><?php esc_html_e( 'Voir la fiche →', 'springcard' ); ?></span>
+					<span class="go"><?php springcard_e( 'Voir la fiche →' ); ?></span>
 				</div>
 			</a>
 			<?php
@@ -104,11 +104,11 @@ $logos_clients    = springcard_get_client_logos();
 <div class="section">
 	<div class="cta-banner reveal">
 		<div>
-			<h3><?php esc_html_e( 'Un besoin plus spécifique ?', 'springcard' ); ?></h3>
-			<p><?php esc_html_e( 'Notre bureau d\'études conçoit le hardware, le firmware et le software autour de M519, sur mesure.', 'springcard' ); ?></p>
+			<h3><?php springcard_e( 'Un besoin plus spécifique ?' ); ?></h3>
+			<p><?php springcard_e( 'Notre bureau d\'études conçoit le hardware, le firmware et le software autour de M519, sur mesure.' ); ?></p>
 		</div>
 		<a class="btn btn-primary" href="<?php echo esc_url( $bureau_url ? $bureau_url : '#' ); ?>">
-			<?php esc_html_e( "Découvrir le bureau d'études", 'springcard' ); ?>
+			<?php springcard_e( "Découvrir le bureau d'études" ); ?>
 		</a>
 	</div>
 </div>
@@ -116,8 +116,8 @@ $logos_clients    = springcard_get_client_logos();
 <?php if ( ! empty( $secteurs ) ) : ?>
 <div class="section">
 	<div class="section-head reveal">
-		<div class="eyebrow"><?php esc_html_e( 'Secteurs', 'springcard' ); ?></div>
-		<h2><?php esc_html_e( 'Vos défis, par secteur', 'springcard' ); ?></h2>
+		<div class="eyebrow"><?php springcard_e( 'Secteurs' ); ?></div>
+		<h2><?php springcard_e( 'Vos défis, par secteur' ); ?></h2>
 	</div>
 	<div class="carousel">
 		<div class="carousel-track">
@@ -135,15 +135,15 @@ $logos_clients    = springcard_get_client_logos();
 			?>
 		</div>
 		<div class="carousel-nav">
-			<button type="button" class="carousel-btn" data-carousel-prev aria-label="<?php esc_attr_e( 'Secteur précédent', 'springcard' ); ?>">←</button>
-			<button type="button" class="carousel-btn" data-carousel-next aria-label="<?php esc_attr_e( 'Secteur suivant', 'springcard' ); ?>">→</button>
+			<button type="button" class="carousel-btn" data-carousel-prev aria-label="<?php springcard_attr_e( 'Secteur précédent' ); ?>">←</button>
+			<button type="button" class="carousel-btn" data-carousel-next aria-label="<?php springcard_attr_e( 'Secteur suivant' ); ?>">→</button>
 		</div>
 	</div>
 </div>
 <?php endif; ?>
 
 <div class="section">
-	<div class="eyebrow"><?php esc_html_e( 'Ils intègrent nos modules', 'springcard' ); ?></div>
+	<div class="eyebrow"><?php springcard_e( 'Ils intègrent nos modules' ); ?></div>
 	<div class="logos-viewport reveal">
 		<div class="logos-track">
 			<?php if ( ! empty( $logos_clients ) ) : ?>

@@ -18,12 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<a class="screen-reader-text" href="#main-content"><?php esc_html_e( 'Aller au contenu principal', 'springcard' ); ?></a>
+<a class="screen-reader-text" href="#main-content"><?php springcard_e( 'Aller au contenu principal' ); ?></a>
 
 <header class="site-header">
 	<div class="header-inner">
 		<div class="logo">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( "Retour à l'accueil SpringCard", 'springcard' ); ?>">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php springcard_attr_e( "Retour à l'accueil SpringCard" ); ?>">
 				<?php springcard_the_logo(); ?>
 			</a>
 		</div>
@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php if ( function_exists( 'pll_the_languages' ) ) : ?>
 				<?php $springcard_languages = pll_the_languages( array( 'raw' => 1 ) ); ?>
 				<?php if ( $springcard_languages ) : ?>
-					<nav class="lang-switch" aria-label="<?php esc_attr_e( 'Changer de langue', 'springcard' ); ?>">
+					<nav class="lang-switch" aria-label="<?php springcard_attr_e( 'Changer de langue' ); ?>">
 						<?php foreach ( $springcard_languages as $springcard_lang ) : ?>
 							<a
 								href="<?php echo esc_url( $springcard_lang['url'] ); ?>"
@@ -58,8 +58,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</nav>
 				<?php endif; ?>
 			<?php endif; ?>
-			<a class="header-cta" href="<?php echo esc_url( springcard_get_contact_url() ); ?>"><?php esc_html_e( 'Contact', 'springcard' ); ?></a>
-			<button type="button" class="navtoggle" id="navtoggle" aria-label="<?php esc_attr_e( 'Ouvrir le menu', 'springcard' ); ?>" aria-expanded="false" aria-controls="mainnav">☰</button>
+			<a class="header-cta" href="<?php echo esc_url( springcard_get_contact_url() ); ?>"><?php springcard_e( 'Contact' ); ?></a>
+			<button type="button" class="navtoggle" id="navtoggle" aria-label="<?php springcard_attr_e( 'Ouvrir le menu' ); ?>" aria-expanded="false" aria-controls="mainnav">☰</button>
 		</div>
 	</div>
 </header>

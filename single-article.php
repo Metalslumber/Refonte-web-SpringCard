@@ -21,10 +21,10 @@ while ( have_posts() ) :
 	?>
 
 	<div class="section reveal" style="padding-top:20px;">
-		<div class="eyebrow"><?php esc_html_e( 'Blog', 'springcard' ); ?></div>
+		<div class="eyebrow"><?php springcard_e( 'Blog' ); ?></div>
 		<h1 style="font-size:1.875rem; max-width:720px; margin-bottom:14px;"><?php the_title(); ?></h1>
 		<div class="single-meta">
-			<span class="tag"><?php esc_html_e( 'Actualité', 'springcard' ); ?></span>
+			<span class="tag"><?php springcard_e( 'Actualité' ); ?></span>
 			<span><?php echo esc_html( get_the_date() ); ?></span>
 		</div>
 
@@ -39,13 +39,13 @@ while ( have_posts() ) :
 		<?php if ( $gamme_url || $solutions_url || $bureau_url ) : ?>
 			<div class="single-tags">
 				<?php if ( $gamme_url ) : ?>
-					<a class="tag" href="<?php echo esc_url( $gamme_url ); ?>"><?php esc_html_e( 'Gamme M519', 'springcard' ); ?></a>
+					<a class="tag" href="<?php echo esc_url( $gamme_url ); ?>"><?php springcard_e( 'Gamme M519' ); ?></a>
 				<?php endif; ?>
 				<?php if ( $solutions_url ) : ?>
-					<a class="tag" href="<?php echo esc_url( $solutions_url ); ?>"><?php esc_html_e( 'Solutions RFID/NFC par secteur', 'springcard' ); ?></a>
+					<a class="tag" href="<?php echo esc_url( $solutions_url ); ?>"><?php springcard_e( 'Solutions RFID/NFC par secteur' ); ?></a>
 				<?php endif; ?>
 				<?php if ( $bureau_url ) : ?>
-					<a class="tag" href="<?php echo esc_url( $bureau_url ); ?>"><?php esc_html_e( "Bureau d'études", 'springcard' ); ?></a>
+					<a class="tag" href="<?php echo esc_url( $bureau_url ); ?>"><?php springcard_e( "Bureau d'études" ); ?></a>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
@@ -55,11 +55,11 @@ while ( have_posts() ) :
 	<div class="section">
 		<div class="cta-banner reveal">
 			<div>
-				<h3><?php esc_html_e( 'Un projet RFID/NFC en tête ?', 'springcard' ); ?></h3>
-				<p><?php esc_html_e( "Notre bureau d'études conçoit des lecteurs sur mesure autour de la gamme M519.", 'springcard' ); ?></p>
+				<h3><?php springcard_e( 'Un projet RFID/NFC en tête ?' ); ?></h3>
+				<p><?php springcard_e( "Notre bureau d'études conçoit des lecteurs sur mesure autour de la gamme M519." ); ?></p>
 			</div>
 			<a class="btn btn-primary" href="<?php echo esc_url( $bureau_url ); ?>">
-				<?php esc_html_e( 'Parler à un ingénieur', 'springcard' ); ?>
+				<?php springcard_e( 'Parler à un ingénieur' ); ?>
 			</a>
 		</div>
 	</div>

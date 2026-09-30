@@ -22,7 +22,7 @@ while ( have_posts() ) :
 
 	<div class="section reveal" style="padding-top:20px;">
 		<div class="eyebrow">
-			<?php esc_html_e( "Cas d'usage", 'springcard' ); ?>
+			<?php springcard_e( "Cas d'usage" ); ?>
 			<?php if ( $client ) : ?> · <?php echo esc_html( $client ); ?><?php endif; ?>
 		</div>
 		<h1 style="font-size:1.875rem; max-width:720px; margin-bottom:18px;"><?php the_title(); ?></h1>
@@ -47,11 +47,11 @@ while ( have_posts() ) :
 	<div class="section">
 		<div class="cta-banner reveal">
 			<div>
-				<h3><?php esc_html_e( 'Un projet similaire ?', 'springcard' ); ?></h3>
-				<p><?php esc_html_e( "Parlons-en avec notre bureau d'études.", 'springcard' ); ?></p>
+				<h3><?php springcard_e( 'Un projet similaire ?' ); ?></h3>
+				<p><?php springcard_e( "Parlons-en avec notre bureau d'études." ); ?></p>
 			</div>
 			<a class="btn btn-primary" href="<?php echo esc_url( $contact_url ); ?>">
-				<?php esc_html_e( 'Décrire votre besoin', 'springcard' ); ?>
+				<?php springcard_e( 'Décrire votre besoin' ); ?>
 			</a>
 		</div>
 	</div>

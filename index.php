@@ -15,7 +15,7 @@ get_header();
 
 <div class="section reveal" style="padding-top:20px;">
 	<?php if ( is_search() ) : ?>
-		<h1 style="font-size:1.875rem; margin-bottom:14px;"><?php echo esc_html( sprintf( __( 'Résultats pour « %s »', 'springcard' ), get_search_query() ) ); ?></h1>
+		<h1 style="font-size:1.875rem; margin-bottom:14px;"><?php echo esc_html( sprintf( springcard_t( 'Résultats pour « %s »' ), get_search_query() ) ); ?></h1>
 	<?php endif; ?>
 	<?php if ( have_posts() ) : ?>
 		<div class="grid grid-3">
@@ -34,7 +34,7 @@ get_header();
 
 		<?php the_posts_pagination(); ?>
 	<?php else : ?>
-		<p class="prose"><?php esc_html_e( 'Aucun résultat.', 'springcard' ); ?></p>
+		<p class="prose"><?php springcard_e( 'Aucun résultat.' ); ?></p>
 	<?php endif; ?>
 </div>
 

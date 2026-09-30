@@ -13,8 +13,8 @@ get_header();
 ?>
 
 <div class="section reveal" style="padding-top:20px;">
-	<div class="eyebrow"><?php esc_html_e( 'Blog', 'springcard' ); ?></div>
-	<h1 style="font-size:1.875rem; margin-bottom:14px;"><?php esc_html_e( 'Actualités SpringCard', 'springcard' ); ?></h1>
+	<div class="eyebrow"><?php springcard_e( 'Blog' ); ?></div>
+	<h1 style="font-size:1.875rem; margin-bottom:14px;"><?php springcard_e( 'Actualités SpringCard' ); ?></h1>
 </div>
 
 <div class="section">
@@ -25,7 +25,7 @@ get_header();
 				the_post();
 				?>
 				<a class="card reveal" href="<?php the_permalink(); ?>">
-					<span class="tag"><?php esc_html_e( 'Actualité', 'springcard' ); ?></span>
+					<span class="tag"><?php springcard_e( 'Actualité' ); ?></span>
 					<h3 style="margin-top:10px;"><?php the_title(); ?></h3>
 					<p><?php echo esc_html( get_the_excerpt() ); ?></p>
 				</a>
@@ -35,7 +35,7 @@ get_header();
 		</div>
 		<?php the_posts_pagination(); ?>
 	<?php else : ?>
-		<p class="prose"><?php esc_html_e( 'Aucun article pour le moment.', 'springcard' ); ?></p>
+		<p class="prose"><?php springcard_e( 'Aucun article pour le moment.' ); ?></p>
 	<?php endif; ?>
 </div>
 

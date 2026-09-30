@@ -39,7 +39,7 @@ while ( have_posts() ) :
 	?>
 
 	<div class="section reveal" style="padding-top:20px;">
-		<div class="eyebrow"><?php esc_html_e( 'Solutions', 'springcard' ); ?></div>
+		<div class="eyebrow"><?php springcard_e( 'Solutions' ); ?></div>
 		<h1 style="font-size:1.875rem; max-width:560px; margin-bottom:14px;"><?php the_title(); ?></h1>
 		<?php if ( get_the_content() ) : ?>
 			<div class="prose" style="max-width:540px;"><?php the_content(); ?></div>
@@ -49,8 +49,8 @@ while ( have_posts() ) :
 				<?php
 				printf(
 					/* translators: %s: lien vers la gamme M519. */
-					wp_kses_post( __( 'Toutes ces solutions s\'appuient sur %s, notre module RFID/NFC OEM.', 'springcard' ) ),
-					'<a href="' . esc_url( $gamme_url ) . '">' . esc_html__( 'la gamme M519', 'springcard' ) . '</a>'
+					wp_kses_post( springcard_t( 'Toutes ces solutions s\'appuient sur %s, notre module RFID/NFC OEM.' ) ),
+					'<a href="' . esc_url( $gamme_url ) . '">' . esc_html( springcard_t( 'la gamme M519' ) ) . '</a>'
 				);
 				?>
 			</p>
@@ -74,24 +74,24 @@ while ( have_posts() ) :
 					</div>
 					<h3><?php echo esc_html( get_the_title( $secteur ) ); ?></h3>
 					<p><?php echo esc_html( get_the_excerpt( $secteur ) ); ?></p>
-					<span class="go"><?php esc_html_e( 'Voir le défi →', 'springcard' ); ?></span>
+					<span class="go"><?php springcard_e( 'Voir le défi →' ); ?></span>
 				</div>
 				<?php
 			endforeach;
 			?>
-			<div class="card reveal ghost"><?php esc_html_e( '+ Futur secteur', 'springcard' ); ?></div>
+			<div class="card reveal ghost"><?php springcard_e( '+ Futur secteur' ); ?></div>
 		</div>
 	</div>
 	<?php endif; ?>
 
 	<?php if ( ! empty( $case_study ) ) : $cas = $case_study[0]; $cas_secteurs = (array) get_post_meta( $cas->ID, '_secteurs', true ); ?>
 	<div class="section" style="background:var(--sc-surface); border-radius:14px; padding:28px;">
-		<div class="eyebrow"><?php esc_html_e( 'Cas d\'usage à la une', 'springcard' ); ?></div>
+		<div class="eyebrow"><?php springcard_e( 'Cas d\'usage à la une' ); ?></div>
 		<div class="case reveal">
 			<?php if ( has_post_thumbnail( $cas ) ) : ?>
 				<div class="case-img"><?php echo get_the_post_thumbnail( $cas, 'medium', array( 'alt' => get_the_title( $cas ) ) ); ?></div>
 			<?php else : ?>
-				<div class="case-img"><?php esc_html_e( '[ Visuel client ]', 'springcard' ); ?></div>
+				<div class="case-img"><?php springcard_e( '[ Visuel client ]' ); ?></div>
 			<?php endif; ?>
 			<div class="case-body">
 				<h3><?php echo esc_html( get_the_title( $cas ) ); ?></h3>
@@ -100,12 +100,12 @@ while ( have_posts() ) :
 					if ( ! empty( $cas_secteurs ) ) {
 						$secteur_titre = get_the_title( (int) $cas_secteurs[0] );
 						/* translators: %s: nom du secteur. */
-						printf( esc_html__( 'Secteur %s : ', 'springcard' ), esc_html( $secteur_titre ) );
+						printf( esc_html( springcard_t( 'Secteur %s : ' ) ), esc_html( $secteur_titre ) );
 					}
 					echo esc_html( get_the_excerpt( $cas ) );
 					?>
 				</p>
-				<a class="go" href="<?php echo esc_url( get_permalink( $cas ) ); ?>"><?php esc_html_e( "Lire le cas d'usage →", 'springcard' ); ?></a>
+				<a class="go" href="<?php echo esc_url( get_permalink( $cas ) ); ?>"><?php springcard_e( "Lire le cas d'usage →" ); ?></a>
 			</div>
 		</div>
 	</div>
@@ -114,11 +114,11 @@ while ( have_posts() ) :
 	<div class="section">
 		<div class="cta-banner reveal">
 			<div>
-				<h3><?php esc_html_e( "Votre secteur n'est pas listé ?", 'springcard' ); ?></h3>
-				<p><?php esc_html_e( "Notre bureau d'études étudie tout projet d'intégration, même hors des cas standards.", 'springcard' ); ?></p>
+				<h3><?php springcard_e( "Votre secteur n'est pas listé ?" ); ?></h3>
+				<p><?php springcard_e( "Notre bureau d'études étudie tout projet d'intégration, même hors des cas standards." ); ?></p>
 			</div>
 			<a class="btn btn-primary" href="<?php echo esc_url( $bureau_url ? $bureau_url : '#' ); ?>">
-				<?php esc_html_e( 'Parler à un ingénieur', 'springcard' ); ?>
+				<?php springcard_e( 'Parler à un ingénieur' ); ?>
 			</a>
 		</div>
 	</div>

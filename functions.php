@@ -30,7 +30,7 @@ function springcard_setup() {
 
 	register_nav_menus(
 		array(
-			'primary' => __( 'Menu principal', 'springcard' ),
+			'primary' => springcard_t( 'Menu principal' ),
 		)
 	);
 }

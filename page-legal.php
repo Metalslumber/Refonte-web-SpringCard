@@ -19,7 +19,7 @@ while ( have_posts() ) :
 	?>
 
 	<div class="section reveal" style="padding-top:20px;">
-		<div class="eyebrow"><?php esc_html_e( 'Informations légales', 'springcard' ); ?></div>
+		<div class="eyebrow"><?php springcard_e( 'Informations légales' ); ?></div>
 		<h1 style="font-size:1.875rem; max-width:640px; margin-bottom:22px;"><?php the_title(); ?></h1>
 		<div class="prose" style="max-width:720px;"><?php the_content(); ?></div>
 	</div>

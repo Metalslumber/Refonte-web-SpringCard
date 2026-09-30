@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php endif; ?>
 		</div>
 
-		<nav class="footer-col" aria-label="<?php esc_attr_e( 'Liens de pied de page', 'springcard' ); ?>">
+		<nav class="footer-col" aria-label="<?php springcard_attr_e( 'Liens de pied de page' ); ?>">
 			<?php
 			wp_nav_menu(
 				array(
@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			printf(
 				/* translators: %s: current year. */
-				esc_html__( '© %s SpringCard', 'springcard' ),
+				esc_html( springcard_t( '© %s SpringCard' ) ),
 				esc_html( gmdate( 'Y' ) )
 			);
 			?>
@@ -83,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		);
 		if ( $legal_pages ) :
 			?>
-			<nav class="footer-legal" aria-label="<?php esc_attr_e( 'Liens légaux', 'springcard' ); ?>">
+			<nav class="footer-legal" aria-label="<?php springcard_attr_e( 'Liens légaux' ); ?>">
 				<?php foreach ( $legal_pages as $legal_page ) : ?>
 					<a href="<?php echo esc_url( get_permalink( $legal_page ) ); ?>"><?php echo esc_html( get_the_title( $legal_page ) ); ?></a>
 				<?php endforeach; ?>
