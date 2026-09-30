@@ -226,11 +226,11 @@ function springcard_get_meta_image_url( $post_id, $meta_key, $size = 'large' ) {
  */
 function springcard_home_text_defaults() {
 	return array(
-		'springcard_home_hero_title' => __( 'Un module, votre lecteur sur mesure', 'springcard' ),
-		'springcard_home_hero_lead'  => __( 'Intégrez M519 dans vos machines. Vous gardez la main sur le design de votre propre lecteur RFID/NFC.', 'springcard' ),
-		'springcard_home_stat_1'     => __( "Le module s'intègre directement dans vos équipements, le boîtier et l'antenne restent les vôtres.", 'springcard' ),
-		'springcard_home_stat_2'     => __( "Notre bureau d'études vous accompagne de l'idée jusqu'au produit fini.", 'springcard' ),
-		'springcard_home_stat_3'     => __( "20 ans d'expérience, fabriqué en France, dans des secteurs qui ne laissent pas de place à l'approximation.", 'springcard' ),
+		'springcard_home_hero_title' => springcard_t( 'Un module, votre lecteur sur mesure' ),
+		'springcard_home_hero_lead'  => springcard_t( 'Intégrez M519 dans vos machines. Vous gardez la main sur le design de votre propre lecteur RFID/NFC.' ),
+		'springcard_home_stat_1'     => springcard_t( "Le module s'intègre directement dans vos équipements, le boîtier et l'antenne restent les vôtres." ),
+		'springcard_home_stat_2'     => springcard_t( "Notre bureau d'études vous accompagne de l'idée jusqu'au produit fini." ),
+		'springcard_home_stat_3'     => springcard_t( "20 ans d'expérience, fabriqué en France, dans des secteurs qui ne laissent pas de place à l'approximation." ),
 	);
 }
 
@@ -416,6 +416,6 @@ function springcard_get_contact_form_html() {
 	return sprintf(
 		'<a class="btn btn-primary" href="%s">%s</a>',
 		esc_url( 'mailto:' . antispambot( $contact_email ) ),
-		esc_html__( 'Envoyer un message', 'springcard' )
+		esc_html( springcard_t( 'Envoyer un message' ) )
 	);
 }

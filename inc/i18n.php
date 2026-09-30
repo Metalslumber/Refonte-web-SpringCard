@@ -231,6 +231,26 @@ function springcard_ui_translations() {
 		// index.php (search results)
 		'Résultats pour « %s »' => 'Results for "%s"',
 		'Aucun résultat.'       => 'No results.',
+
+		// inc/helpers.php — springcard_home_text_defaults() (hero, front-page.php)
+		'Un module, votre lecteur sur mesure'                                                                          => 'One module, your custom-made reader',
+		'Intégrez M519 dans vos machines. Vous gardez la main sur le design de votre propre lecteur RFID/NFC.'        => 'Integrate M519 into your equipment. You stay in control of the design of your own RFID/NFC reader.',
+		"Le module s'intègre directement dans vos équipements, le boîtier et l'antenne restent les vôtres."           => 'The module integrates directly into your equipment — the housing and the antenna stay yours.',
+		"Notre bureau d'études vous accompagne de l'idée jusqu'au produit fini."                                       => 'Our engineering office supports you from the idea through to the finished product.',
+		"20 ans d'expérience, fabriqué en France, dans des secteurs qui ne laissent pas de place à l'approximation."   => '20 years of experience, made in France, in sectors that leave no room for approximation.',
+
+		// inc/helpers.php — springcard_get_contact_form_html() mailto fallback
+		'Envoyer un message' => 'Send a message',
+
+		// inc/meta-boxes.php — springcard_antenne_options()/springcard_statut_options(),
+		// shared between the admin edit screens and the frontend badges
+		// (front-page.php, single-gamme.php "MODULE SEUL" tag, hero facts...).
+		'Module seul'       => 'Module only',
+		'Antenne intégrée'  => 'Integrated antenna',
+		'Antenne déportée'  => 'Remote antenna',
+		'Actif'             => 'Active',
+		'Archivé'           => 'Discontinued',
+		'À venir'           => 'Coming soon',
 	);
 }
 

@@ -21,9 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function springcard_statut_options() {
 	return array(
-		'actif'    => __( 'Actif', 'springcard' ),
-		'archive'  => __( 'Archivé', 'springcard' ),
-		'a_venir'  => __( 'À venir', 'springcard' ),
+		'actif'    => springcard_t( 'Actif' ),
+		'archive'  => springcard_t( 'Archivé' ),
+		'a_venir'  => springcard_t( 'À venir' ),
 	);
 }
 
@@ -35,9 +35,9 @@ function springcard_statut_options() {
  */
 function springcard_antenne_options() {
 	return array(
-		'non_fournie' => __( 'Module seul', 'springcard' ),
-		'integree'    => __( 'Antenne intégrée', 'springcard' ),
-		'separee'     => __( 'Antenne déportée', 'springcard' ),
+		'non_fournie' => springcard_t( 'Module seul' ),
+		'integree'    => springcard_t( 'Antenne intégrée' ),
+		'separee'     => springcard_t( 'Antenne déportée' ),
 	);
 }
 
