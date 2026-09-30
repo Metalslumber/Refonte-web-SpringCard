@@ -1134,6 +1134,38 @@ function springcard_seed_run() {
 		}
 	}
 
+	// Organisation / Knowledge Graph — logo et profils sociaux affichés dans le
+	// panneau de connaissance Google. Champs et valeurs vérifiés dans le code
+	// source de Rank Math (includes/settings/titles/local.php :
+	// knowledgegraph_type, knowledgegraph_name, knowledgegraph_logo ;
+	// includes/modules/schema/class-jsonld.php::get_social_profiles() pour
+	// social_url_facebook, twitter_author_names, social_additional_profiles).
+	if ( empty( $rank_math_titles['knowledgegraph_type'] ) ) {
+		$rank_math_titles['knowledgegraph_type'] = 'company';
+	}
+	if ( empty( $rank_math_titles['knowledgegraph_name'] ) ) {
+		$rank_math_titles['knowledgegraph_name'] = 'SpringCard';
+	}
+	if ( empty( $rank_math_titles['website_name'] ) ) {
+		$rank_math_titles['website_name'] = 'SpringCard';
+	}
+	if ( empty( $rank_math_titles['knowledgegraph_logo'] ) ) {
+		$logo_id = springcard_sideload_theme_asset( get_theme_file_path( 'assets/images/logo-square.png' ), 'SpringCard' );
+		if ( $logo_id ) {
+			$rank_math_titles['knowledgegraph_logo']    = wp_get_attachment_url( $logo_id );
+			$rank_math_titles['knowledgegraph_logo_id'] = $logo_id;
+		}
+	}
+	if ( empty( $rank_math_titles['social_url_facebook'] ) ) {
+		$rank_math_titles['social_url_facebook'] = 'https://www.facebook.com/Springcard/';
+	}
+	if ( empty( $rank_math_titles['twitter_author_names'] ) ) {
+		$rank_math_titles['twitter_author_names'] = 'sc_rfid';
+	}
+	if ( empty( $rank_math_titles['social_additional_profiles'] ) ) {
+		$rank_math_titles['social_additional_profiles'] = "https://www.linkedin.com/company/springcard/\nhttps://www.youtube.com/channel/UChkfP_eFhSFndcPYombOLmg";
+	}
+
 	update_option( 'rank-math-options-titles', $rank_math_titles );
 
 	// Menu principal : Accueil · Produits · Bureau d'études · Solutions · À propos
