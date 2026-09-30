@@ -1524,11 +1524,14 @@ function springcard_seed_bilingual_run() {
 			pll_set_term_language( $menu_id, $lang );
 		}
 
-		// wp_update_nav_menu_item() with a 0 db id always INSERTS a new item —
-		// guard the whole block on the menu being empty, otherwise relaunching
-		// this seed doubles every menu entry (as it would for the French-only
-		// menu, seeded independently by the other deployment plugin).
-		if ( ! wp_get_nav_menu_items( $menu_id ) ) {
+		// wp_update_nav_menu_item() with a 0 db id always INSERTS a new item.
+		// Rather than a fragile "only add if the menu looks empty" guard, clear
+		// out any existing items first and rebuild from scratch every time —
+		// the menu always ends up with exactly the items below, however messy
+		// (or duplicated) its previous state was.
+		foreach ( wp_get_nav_menu_items( $menu_id ) ?: array() as $existing_menu_item ) {
+			wp_delete_post( $existing_menu_item->ID, true );
+		}
 		wp_update_nav_menu_item(
 			$menu_id,
 			0,
@@ -1633,8 +1636,6 @@ function springcard_seed_bilingual_run() {
 					)
 				);
 			}
-		}
-
 		}
 
 		$menu_ids[ $lang ] = $menu_id;
