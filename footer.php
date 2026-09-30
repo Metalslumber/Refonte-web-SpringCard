@@ -69,16 +69,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 		</span>
 		<?php
+		// Pas de springcard_lang_filter() ici : ces pages n'existent qu'en
+		// français (voir inc/helpers.php, seed du contenu légal), donc les
+		// filtrer par langue les ferait disparaître entièrement du pied de
+		// page anglais. Mieux vaut toujours afficher les pages légales
+		// françaises que de n'en afficher aucune.
 		$legal_pages = get_posts(
-			springcard_lang_filter(
-				array(
-					'post_type'      => 'page',
-					'posts_per_page' => -1,
-					'meta_key'       => '_wp_page_template',
-					'meta_value'     => 'page-legal.php',
-					'orderby'        => 'menu_order',
-					'order'          => 'ASC',
-				)
+			array(
+				'post_type'      => 'page',
+				'posts_per_page' => -1,
+				'meta_key'       => '_wp_page_template',
+				'meta_value'     => 'page-legal.php',
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+				'lang'           => '',
 			)
 		);
 		if ( $legal_pages ) :
