@@ -1146,7 +1146,11 @@ function springcard_seed_run() {
 		$menu_id = $term ? $term->term_id : 0;
 	}
 
-	if ( $menu_id ) {
+	// wp_update_nav_menu_item() with a 0 db id always INSERTS a new item — it
+	// isn't idempotent like the rest of this script. Guard the whole block on
+	// the menu being empty, otherwise relaunching this seed (e.g. once for the
+	// French content, once for the bilingual one) doubles every menu entry.
+	if ( $menu_id && ! wp_get_nav_menu_items( $menu_id ) ) {
 		wp_update_nav_menu_item(
 			$menu_id,
 			0,
@@ -1253,6 +1257,9 @@ function springcard_seed_run() {
 			}
 		}
 
+	}
+
+	if ( $menu_id ) {
 		$locations = get_theme_mod( 'nav_menu_locations' );
 		if ( ! is_array( $locations ) ) {
 			$locations = array();
