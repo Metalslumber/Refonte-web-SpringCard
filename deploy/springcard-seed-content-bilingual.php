@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: SpringCard - Contenu de demonstration (FR/EN)
- * Description: Cree ou complete le contenu bilingue du site SpringCard (pages, gamme M519, produits, secteurs, cas d'usage, expertises, articles, formulaire de contact, reglages SEO) en francais ET en anglais via Polylang. Necessite Polylang installe et actif. Adopte le contenu francais deja present (cree par le plugin francais-seul) plutot que de le dupliquer. Sans danger a relancer plusieurs fois.
- * Version: 1.0
+ * Description: Cree ou complete le contenu bilingue du site SpringCard (pages, gamme M519, produits, secteurs, cas d'usage, expertises, articles, formulaire de contact, reglages SEO) en francais ET en anglais via Polylang. Necessite Polylang installe et actif. Sans danger a relancer plusieurs fois : le contenu et les menus sont nettoyes puis reconstruits a l'identique a chaque lancement, jamais dupliques.
+ * Version: 1.5
  *
  * @package SpringCard
  */
@@ -38,13 +38,14 @@ function springcard_seed_bilingual_admin_page() {
 	?>
 	<div class="wrap">
 		<h1>Contenu SpringCard (FR/EN)</h1>
+		<p>Version du plugin : <strong>1.5</strong> — verifie que ce numero correspond bien a la derniere version avant de relancer (retelecharge le fichier si besoin, un zip deja telecharge peut etre perime).</p>
 		<?php if ( ! $polylang_active ) : ?>
 			<div class="notice notice-error"><p>Polylang n'est pas actif. Installe et active Polylang (Extensions > Ajouter, rechercher "Polylang") avant de lancer la creation du contenu bilingue.</p></div>
 		<?php elseif ( $ran ) : ?>
-			<div class="notice notice-success"><p>Fait. Le contenu francais deja present a ete conserve (pas duplique), et sa version anglaise a ete creee.</p></div>
+			<div class="notice notice-success"><p>Fait. Le contenu deja present a ete conserve (pas duplique), les menus ont ete entierement reconstruits, et le reste du contenu/reglages a ete complete.</p></div>
 		<?php endif; ?>
-		<p>Ce bouton met en place les langues (francais/anglais) dans Polylang si besoin, puis cree ou complete en bilingue : les pages, la gamme M519 et ses variantes, les secteurs, le cas d'usage AFCare/Doctolib, les expertises, l'article SpringPass, et les reglages SEO correspondants.</p>
-		<p><strong>Sans danger a relancer</strong>, et sans risque de doublon avec le contenu francais deja cree par le plugin "SpringCard - Contenu de demonstration".</p>
+		<p>Ce bouton met en place les langues (francais/anglais) dans Polylang si besoin, puis cree ou complete en bilingue : les pages, la gamme M519 et ses variantes, les secteurs, le cas d'usage AFCare/Doctolib, les expertises, l'article SpringPass, les pages legales, le menu principal, et les reglages SEO correspondants.</p>
+		<p><strong>Sans danger a relancer</strong> : le contenu existant n'est jamais duplique, et les menus sont entierement nettoyes puis reconstruits a chaque lancement.</p>
 		<form method="post">
 			<?php wp_nonce_field( 'springcard_seed_bilingual_run', 'springcard_seed_nonce' ); ?>
 			<?php submit_button( 'Lancer / relancer la creation du contenu bilingue', 'primary', 'submit', true, $polylang_active ? array() : array( 'disabled' => 'disabled' ) ); ?>
